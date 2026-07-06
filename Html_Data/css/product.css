@@ -1,0 +1,418 @@
+/* CSS specifically for the product detail page */
+
+.info-sections {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.info-card {
+    padding: 30px;
+}
+
+.info-card .card-title {
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+}
+
+.section-subtitle {
+    font-size: 1.1rem;
+    color: var(--primary-dark);
+    margin-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 5px;
+}
+
+/* Spec Highlights */
+.spec-highlights {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 30px;
+    background: var(--bg-page);
+    padding: 20px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+}
+
+.spec-item {
+    background: var(--bg-card);
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.95rem;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-color);
+}
+
+.spec-label {
+    color: var(--text-light);
+    margin-right: 5px;
+}
+
+.spec-value {
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+/* Wiring Diagram */
+.wiring-container {
+    text-align: center;
+    background: var(--bg-page);
+    padding: 30px;
+    border-radius: var(--radius-md);
+    border: 1px dashed #cbd5e1;
+}
+
+.wiring-img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    mix-blend-mode: multiply; /* Helps if image has white bg */
+}
+
+/* Applications Grid & Top-Bottom View */
+.app-section-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.app-grid-wrapper {
+    width: 100%;
+}
+
+.app-iframe-wrapper {
+    width: 100%;
+    display: none; /* Hidden by default */
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    height: 600px;
+    box-shadow: inset var(--shadow-sm);
+}
+
+.app-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: var(--bg-card);
+}
+
+.app-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 items per row */
+    gap: 15px;
+}
+
+/* Responsive grid */
+@media (max-width: 900px) {
+    .app-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .app-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.app-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+    background: var(--bg-page);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+    transition: var(--transition-fast);
+    cursor: pointer;
+}
+
+.app-card:hover {
+    background: var(--primary-color) !important;
+    color: var(--text-white) !important;
+    transform: translateY(-3px);
+}
+
+.app-card:hover .app-icon, .app-card:hover .app-text {
+    color: var(--text-white) !important;
+}
+
+.app-icon {
+    font-size: 32px;
+    color: var(--accent-color);
+    transition: color var(--transition-fast);
+}
+
+.app-text {
+    font-weight: 600;
+    color: var(--text-main);
+    transition: color var(--transition-fast);
+}
+
+/* Off-Canvas Drawer */
+.offcanvas-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition-normal);
+}
+
+.offcanvas-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.offcanvas-drawer {
+    position: fixed;
+    top: 0;
+    right: -450px;
+    width: 450px;
+    max-width: 100vw;
+    height: 100vh;
+    background: var(--bg-card);
+    z-index: 2001;
+    box-shadow: -5px 0 25px rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
+    transition: right 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.offcanvas-drawer.active {
+    right: 0;
+}
+
+.drawer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 25px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.drawer-title {
+    font-size: 1.25rem;
+    color: var(--primary-color);
+    margin: 0;
+}
+
+.drawer-close {
+    background: none;
+    border: none;
+    color: var(--text-light);
+    cursor: pointer;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-fast);
+}
+
+.drawer-close:hover {
+    background: var(--bg-hover);
+    color: var(--text-main);
+}
+
+.drawer-tabs {
+    display: flex;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.drawer-tab-btn {
+    flex: 1;
+    background: none;
+    border: none;
+    padding: 15px 0;
+    color: var(--text-light);
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    position: relative;
+    transition: var(--transition-fast);
+}
+
+.drawer-tab-btn:hover {
+    color: var(--text-main);
+    background: var(--bg-hover);
+}
+
+.drawer-tab-btn.active {
+    color: var(--primary-color);
+}
+
+.drawer-tab-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--primary-color);
+    border-radius: 3px 3px 0 0;
+}
+
+.drawer-content-area {
+    padding: 25px;
+    flex: 1;
+    overflow-y: auto;
+}
+
+.drawer-tab-content {
+    display: none;
+    animation: fadeIn 0.3s ease;
+}
+
+.drawer-tab-content.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 500px) {
+    .offcanvas-drawer {
+        width: 100%;
+        right: -100%;
+    }
+}
+
+/* Permanent Specs Container */
+.permanent-specs-container {
+    padding-right: 65px; /* Reserve space for the floating tabs on the right */
+}
+
+/* Inline Book Drawer Container - overlay */
+.inline-book-drawer-container {
+    display: flex;
+    flex-direction: row-reverse;
+    position: absolute; /* Overlays the product-info-panel */
+    top: 0;
+    right: 0;
+    height: max-content;
+    min-height: 200px;
+    width: 85%; /* Covers 85% of the panel */
+    pointer-events: none; /* Let clicks pass through to permanent content when closed */
+    z-index: 10;
+}
+
+.inline-drawer-content-area {
+    flex: 1;
+    background: var(--bg-card);
+    border: 2px solid var(--border-color);
+    border-right-color: var(--primary-color);
+    border-radius: 8px 0 8px 8px;
+    padding: 20px;
+    position: relative;
+    overflow-y: auto;
+    z-index: 2;
+    box-shadow: -5px 0 15px rgba(0,0,0,0.2); /* Shadow on the left to show it's an overlay */
+    pointer-events: auto; /* Re-enable clicks for the drawer content */
+    
+    /* Hide by translating entirely to the right */
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    opacity: 0;
+}
+
+/* When the container is open, slide the drawer in */
+.inline-book-drawer-container.drawer-open .inline-drawer-content-area {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.inline-drawer-pane {
+    display: none;
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+.inline-drawer-pane.active {
+    display: block;
+}
+
+.inline-book-tabs {
+    display: flex;
+    flex-direction: column;
+    z-index: 3;
+    margin-left: -2px;
+    margin-bottom: 0;
+    gap: 5px;
+    pointer-events: auto; /* Re-enable clicks for tabs */
+}
+
+.inline-book-tab {
+    background: transparent;
+    border: none;
+    padding: 15px 5px; /* Reduced padding to fit text tightly */
+    margin-bottom: 0;
+    cursor: pointer;
+    box-shadow: none;
+    transition: all 0.2s ease;
+    transform: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+}
+
+/* File folder shape using 3D perspective */
+.inline-book-tab::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: var(--bg-page);
+    border: 2px solid var(--border-color);
+    border-left: none;
+    border-radius: 0 12px 12px 0;
+    /* This creates the sloped trapezoid shape on the right side */
+    transform: perspective(60px) rotateY(-10deg);
+    transform-origin: left center;
+    z-index: -1;
+    transition: all 0.2s ease;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.05); /* Subtle shadow like in the photo */
+}
+
+.inline-book-tab:hover::before {
+    background: var(--bg-hover);
+    border-color: var(--primary-light);
+}
+
+.inline-book-tab.active {
+    color: var(--primary-color);
+    z-index: 4;
+}
+
+.inline-book-tab.active::before {
+    background: var(--bg-card);
+    border-color: var(--primary-color);
+    border-right-width: 4px;
+    border-left: 2px solid var(--bg-card); /* Mask the content area's border */
+    box-shadow: none;
+}
+
+.inline-book-tab.active .tab-text {
+    color: var(--primary-color);
+}
+
+.tab-text {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text-main);
+    white-space: nowrap;
+    writing-mode: vertical-rl; /* 垂直書寫模式 */
+    letter-spacing: 4px; /* 直式書寫通常字距稍微拉開比較好看 */
+}

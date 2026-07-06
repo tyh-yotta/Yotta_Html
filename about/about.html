@@ -1,0 +1,135 @@
+﻿<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="title.about">關於我們 | Yottacontrol</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="../Html_Data/css/index.css">
+</head>
+<body>
+    <div id="topBanner" class="top-banner"></div>
+
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="logo-link">
+                <img src="../Html_Data/assets/logo.png" alt="Yotta Logo" class="logo">
+            </a>
+            
+            <nav class="nav-links" id="mainNavLinks">
+                <!-- JS renderMainMenu() -->
+            </nav>
+
+            <div class="nav-actions">
+                <div class="search-box">
+                    <span class="material-symbols-outlined">search</span>
+                    <input type="text" data-i18n-placeholder="search.placeholder" placeholder="搜尋產品...">
+                </div>
+                <button class="lang-toggle" onclick="toggleLanguage()">EN</button>
+                <button class="mobile-menu-btn">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="page-header">
+        <div class="container">
+            <h1>關於我們</h1>
+            <div class="breadcrumb">
+                <a href="../index.html">首頁</a>
+                <span class="material-symbols-outlined separator">chevron_right</span>
+                <span class="current">關於我們</span>
+            </div>
+        </div>
+    </div>
+
+    <main class="main-layout container">
+        <aside class="sidebar">
+            <ul class="sidebar-menu">
+                <li class="menu-group active">
+                    <div class="group-title">公司簡介 <span class="material-symbols-outlined">expand_more</span></div>
+                    <ul class="sub-menu open">
+                        <li><a href="#" class="active">公司簡介</a></li>
+                        <li><a href="#">品質與服務</a></li>
+                        <li><a href="#">CE認證</a></li>
+                        <li><a href="#">代理商</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </aside>
+
+        <section class="content-area">
+            <h2 class="section-title">公司簡介 (Company Profile)</h2>
+            <div class="about-content" style="line-height: 1.8; color: var(--text-light); font-size: 1.05rem;">
+                <p style="margin-bottom: 20px;">
+                    <strong>巨控自動化股份有限公司 (Yottacontrol)</strong> 成立於 2006 年，由多位工控領域菁英組成研發團隊。我們專注於工業自動化領域，致力於生產高性能、高穩定性的工業自動化產品，並設有國家級實驗室進行測試與校正。
+                </p>
+                <p style="margin-bottom: 20px;">
+                    我們的產品線非常完整，涵蓋分散式控制器 (DCS)、集中式控制器 (PLC)、各類 I/O 模組（支援 USB / WIFI / Ethernet / RS485）、工業通訊轉換器、文本顯示器、計時器 / 計數器 / 轉速計以及工業電腦等。
+                </p>
+                <h3 style="color: #003f7f; margin: 30px 0 15px; font-size: 1.3rem;">領先業界的核心技術</h3>
+                <p style="margin-bottom: 20px;">
+                    我們擁有許多「業界首創」的技術紀錄，例如全球首款結合計時、計數及轉數計的多功能裝置，以及支援 10,000 點 I/O 的強大控制器系列。
+                </p>
+                <h3 style="color: #003f7f; margin: 30px 0 15px; font-size: 1.3rem;">品質與服務承諾</h3>
+                <p>
+                    我們強調生產流程的全程檢測，並提供產品品質保固服務。更承諾針對各行各業的諮詢與應用需求，在 <strong>24 小時內</strong>給予迅速專業的回覆。
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <img src="../Html_Data/assets/logo.png" alt="Yotta Logo" class="footer-logo">
+                    <p class="footer-about" data-i18n="footer.about">
+                        Yottacontrol 致力於提供高品質的自動化控制產品，包含控制器、I/O模組及工業電腦，協助企業實現工業 4.0 的智慧工廠願景。
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4 data-i18n="footer.links">快速連結</h4>
+                    <ul id="footerNavLinks">
+                        <!-- JS renderMainMenu() -->
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 data-i18n="footer.contact">聯絡資訊</h4>
+                    <ul class="contact-info">
+                        <li>
+                            <span class="material-symbols-outlined">location_on</span>
+                            <span>(80673) 高雄市前鎮區新衙路286號-3號8F-1</span>
+                        </li>
+                        <li>
+                            <span class="material-symbols-outlined">call</span>
+                            <span>+886-7-821-6370</span>
+                        </li>
+                        <li>
+                            <span class="material-symbols-outlined">fax</span>
+                            <span>+886-7-812-6559</span>
+                        </li>
+                        <li>
+                            <span class="material-symbols-outlined">mail</span>
+                            <span>sales@yottacontrol.com.tw</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p data-i18n="footer.copyright">&copy; 2026 Yottacontrol. 保留所有權利。</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../Html_Data/js/i18n.js"></script>
+    <script src="../Html_Data/js/message.js"></script>
+    <script src="../Html_Data/js/data.js"></script>
+    <script src="../Html_Data/js/common.js"></script>
+    <script src="../Html_Data/js/script.js"></script>
+</body>
+</html>

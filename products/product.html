@@ -1,0 +1,236 @@
+﻿<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>產品介紹 | Yottacontrol</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Material Icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="../Html_Data/css/index.css?v=2">
+    <link rel="stylesheet" href="../Html_Data/css/product.css?v=2">
+</head>
+<body>
+
+    <!-- Top Announcement Banner -->
+    <div id="topBanner" class="top-banner"></div>
+
+    <!-- Header Navigation -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="logo-link">
+                <img src="../Html_Data/assets/logo.png" alt="Yotta Logo" class="logo">
+            </a>
+            
+            <nav class="nav-links" id="mainNavLinks">
+                <!-- JS renderMainMenu() 將在此處動態生成選單 -->
+            </nav>
+
+            <div class="nav-actions">
+                <div class="search-box">
+                    <span class="material-symbols-outlined">search</span>
+                    <input type="text" data-i18n-placeholder="search.placeholder" placeholder="搜尋產品...">
+                </div>
+                <button class="lang-toggle" onclick="toggleLanguage()">EN</button>
+                <button class="mobile-menu-btn">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header / Breadcrumb -->
+    <div class="page-header">
+        <div class="container">
+            <h1 id="headerTitle">產品詳細資訊</h1>
+            <div class="breadcrumb">
+                <a href="../index.html" data-i18n="nav.home">首頁</a>
+                <span class="material-symbols-outlined separator">chevron_right</span>
+                <span data-i18n="nav.products">產品介紹</span>
+                <span class="material-symbols-outlined separator">chevron_right</span>
+                <span data-i18n="sidebar.io_modules">I/O 模組</span>
+                <span class="material-symbols-outlined separator">chevron_right</span>
+                <a href="products_a10x.html">A-10x 系列(RS485)</a>
+                <span class="material-symbols-outlined separator">chevron_right</span>
+                <span class="current" id="breadcrumbModel">載入中...</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content Layout -->
+    <main class="main-layout container">
+        
+        <!-- Sidebar Menu -->
+        <aside class="sidebar">
+            <ul class="sidebar-menu" id="categoryMenu">
+                <!-- JS renderSidebar() 將在此處動態生成側邊欄 -->
+            </ul>
+        </aside>
+
+        <!-- Product Detail Content -->
+        <section class="content-area" id="productDetailArea">
+            <h2 id="detailTitle" class="product-title" style="margin-top: 0; margin-bottom: 30px; border-bottom: 2px solid var(--primary-color); padding-bottom: 10px; display: inline-block;">載入中...</h2>
+            
+            <div class="product-top-section">
+                <div class="product-image-gallery">
+                    <img id="detailImage" src="" alt="Product Image" class="main-product-img">
+                </div>
+                <div class="product-info-panel">
+                        <div class="permanent-specs-container">
+                            <p class="product-desc" id="detailDesc">高可靠度的工業控制 I/O 解決方案，適用於多種自動化場景。</p>
+                            <div class="product-specs-summary" style="margin-top: 15px;">
+                                <table class="spec-table summary-table">
+                                    <tbody>
+                                        <tr><th data-i18n="table.di">DI (數位輸入)</th><td id="detailDi">-</td></tr>
+                                        <tr><th data-i18n="table.do">DO (數位輸出)</th><td id="detailDo">-</td></tr>
+                                        <tr><th data-i18n="table.ai">AI (類比輸入)</th><td id="detailAi">-</td></tr>
+                                        <tr><th data-i18n="table.ao">AO (類比輸出)</th><td id="detailAo">-</td></tr>
+                                        <tr><th data-i18n="table.comm">通訊介面</th><td id="detailComm">-</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="product-bottom-section" style="margin-top: 30px;">
+                                <h3 class="section-title" data-i18n="prod.features">產品特色 (Features)</h3>
+                                <ul class="feature-list" id="detailFeatures">
+                                    <!-- JS renders features here -->
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="inline-book-drawer-container">
+                        <div class="inline-book-tabs" id="dynamicTabsContainer">
+                            <!-- JS 會動態生成頁籤按鈕放在這裡 -->
+                        </div>
+                        <div class="inline-drawer-content-area" id="dynamicPanesContainer">
+                            <!-- JS 會動態生成抽屜內容放在這裡 -->
+                        </div>
+                    </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <img src="../Html_Data/assets/logo.png" alt="Yotta Logo" class="footer-logo">
+                    <p class="footer-about" data-i18n="footer.about">
+                        Yottacontrol 致力於提供高品質的自動化控制產品，包含控制器、I/O模組及工業電腦，協助企業實現工業 4.0 的智慧工廠願景。
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4 data-i18n="footer.links">快速連結</h4>
+                    <ul id="footerNavLinks">
+                        <!-- JS renderMainMenu() 將在此處動態生成選單 -->
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 data-i18n="footer.contact">聯絡資訊</h4>
+                    <ul class="contact-info">
+                        <li>
+                            <span class="material-symbols-outlined">location_on</span>
+                            <span>(80673) 高雄市前鎮區新衙路286號-3號8F-1</span>
+                        </li>
+                        <li>
+                            <span class="material-symbols-outlined">call</span>
+                            <span>+886-7-821-6370</span>
+                        </li>
+                        <li>
+                            <span class="material-symbols-outlined">fax</span>
+                            <span>+886-7-812-6559</span>
+                        </li>
+                        <li>
+                            <span class="material-symbols-outlined">mail</span>
+                            <span>sales@yottacontrol.com.tw</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p data-i18n="footer.copyright">&copy; 2026 Yottacontrol. 保留所有權利。</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../Html_Data/js/i18n.js?v=2"></script>
+    <script src="../Html_Data/js/message.js?v=2"></script>
+    <script src="../Html_Data/js/data.js?v=2"></script>
+    <script src="../Html_Data/js/common.js?v=2"></script>
+    <script src="../Html_Data/js/script.js?v=2"></script>
+    
+    <script>
+    // 獨立的頁籤切換腳本，加入收合抽屜邏輯
+    function switchTab(btn) {
+        var container = btn.closest('.inline-book-drawer-container');
+        if (!container) return;
+        
+        var targetId = btn.getAttribute('data-target');
+        var pane = document.getElementById(targetId);
+        
+        // 點擊已經啟動的頁籤時，關閉抽屜
+        if (btn.classList.contains('active')) {
+            btn.classList.remove('active');
+            if (pane) pane.classList.remove('active');
+            container.classList.remove('drawer-open');
+            var topSection = document.querySelector('.product-top-section');
+            if (topSection) topSection.style.minHeight = '200px';
+            return;
+        }
+        
+        var tabs = container.querySelectorAll('.inline-book-tab');
+        var panes = container.querySelectorAll('.inline-drawer-pane');
+        
+        tabs.forEach(function(t) { t.classList.remove('active'); });
+        panes.forEach(function(p) { p.classList.remove('active'); });
+        
+        btn.classList.add('active');
+        container.classList.add('drawer-open');
+        
+        if (pane) {
+            pane.classList.add('active');
+        }
+
+        // Dynamically adjust container height
+        var topSection = document.querySelector('.product-top-section');
+        if (topSection) {
+            if (targetId === 'tab-apps') {
+                var solutionContainer = document.getElementById('solutionContainer');
+                if (solutionContainer && solutionContainer.style.display === 'block') {
+                    topSection.style.minHeight = '500px';
+                } else {
+                    topSection.style.minHeight = '200px';
+                }
+            } else {
+                topSection.style.minHeight = '200px';
+            }
+        }
+    }
+
+    // 點擊其他地方時，自動收合抽屜
+    document.addEventListener('click', function(event) {
+        var openContainers = document.querySelectorAll('.inline-book-drawer-container.drawer-open');
+        openContainers.forEach(function(container) {
+            // 如果點擊的目標不在 container 內，就收合抽屜
+            if (!container.contains(event.target)) {
+                container.classList.remove('drawer-open');
+                var tabs = container.querySelectorAll('.inline-book-tab');
+                var panes = container.querySelectorAll('.inline-drawer-pane');
+                tabs.forEach(function(t) { t.classList.remove('active'); });
+                panes.forEach(function(p) { p.classList.remove('active'); });
+                
+                var topSection = document.querySelector('.product-top-section');
+                if (topSection) topSection.style.minHeight = '200px';
+            }
+        });
+    });
+    </script>
+</body>
+</html>

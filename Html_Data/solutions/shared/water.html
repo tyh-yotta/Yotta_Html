@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>水質監控系統解決方案</title>
+    <!-- Google Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="../../css/index.css">
+    
+    <style>
+        body {
+            background-color: var(--bg-page);
+            padding: 40px;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+        .solution-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--border-color);
+            flex-shrink: 0;
+        }
+        .solution-header .icon {
+            font-size: 42px;
+            color: #0ea5e9;
+        }
+        .solution-title {
+            color: var(--primary-color);
+            margin: 0;
+            font-size: 32px;
+        }
+        .solution-content {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+        .solution-content > p {
+            line-height: 1.8;
+            color: var(--text-main);
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+        .solution-list {
+            margin-left: 20px;
+            margin-bottom: 25px;
+            flex-shrink: 0;
+        }
+        .solution-list li {
+            margin-bottom: 15px;
+            color: var(--text-main);
+            font-size: 0.9rem;
+        }
+        .solution-img-wrapper {
+            background: var(--bg-page);
+            padding: 30px;
+            border-radius: var(--radius-md);
+            text-align: center;
+            border: 1px dashed var(--border-color);
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 200px;
+        }
+        .solution-img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="solution-header">
+        <span class="material-symbols-outlined icon">water_drop</span>
+        <h1 class="solution-title">水質監控系統解決方案</h1>
+    </div>
+    
+    <div class="solution-content">
+        <p>無論是工業廢水處理、水產養殖、或是自來水淨化廠，維持水質的穩定都是至關重要的。透過我們的 I/O 模組，您可以輕鬆整合各種水質探頭（包含 pH 值、導電度、溶氧量、濁度等），實現 24 小時無間斷的遠端監測與自動化控制。</p>
+        
+        <p><strong>主要應用優勢：</strong></p>
+        <ul class="solution-list">
+            <li><strong>自動化聯鎖控制：</strong> 當水質參數超過警戒值時，模組可自動觸發加藥泵或曝氣設備，無需人工介入。</li>
+            <li><strong>高精度類比採集：</strong> 精準轉換感測器的微弱訊號，確保監測數據的可靠性。</li>
+            <li><strong>雲端整合：</strong> 支援標準通訊協定，輕鬆將數據上傳至雲端平台，實現遠端手機監看。</li>
+        </ul>
+        
+        <div class="solution-img-wrapper">
+            <!-- 這裡先用產品預設圖代替解決方案情境圖 -->
+            <img src="../../assets/product.png" alt="水質監控示意圖" class="solution-img">
+        </div>
+    </div>
+
+</body>
+</html>

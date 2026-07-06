@@ -1,0 +1,293 @@
+﻿<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="title.location">交通位置 | Yottacontrol</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="../Html_Data/css/index.css">
+    <style>
+        .contact-layout {
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+        .contact-form-container {
+            flex: 1;
+            min-width: 300px;
+            background: var(--bg-card);
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+        .contact-info-container {
+            flex: 1;
+            min-width: 300px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--text-light);
+        }
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #cbd5e1;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.2s;
+        }
+        .form-control:focus {
+            outline: none;
+            border-color: #003f7f;
+            box-shadow: 0 0 0 3px rgba(0, 63, 127, 0.1);
+        }
+        .btn-submit {
+            background: #003f7f;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+            width: 100%;
+        }
+        .btn-submit:hover {
+            background: #00264d;
+        }
+        .contact-details {
+            background: var(--bg-page);
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            margin-bottom: 30px;
+        }
+        .contact-details h3 {
+            color: #003f7f;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+        .contact-details ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .contact-details li {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 15px;
+            color: var(--text-light);
+            line-height: 1.5;
+        }
+        .contact-details .material-symbols-outlined {
+            color: #00a8ff;
+        }
+        .map-container {
+            width: 100%;
+            height: 300px;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+            background: #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #718096;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div id="topBanner" class="top-banner"></div>
+
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="logo-link">
+                <img src="../Html_Data/assets/logo.png" alt="Yotta Logo" class="logo">
+            </a>
+            
+            <nav class="nav-links" id="mainNavLinks">
+                <!-- JS renderMainMenu() -->
+            </nav>
+
+            <div class="nav-actions">
+                <div class="search-box">
+                    <span class="material-symbols-outlined">search</span>
+                    <input type="text" data-i18n-placeholder="search.placeholder" placeholder="搜尋產品...">
+                </div>
+                <button class="lang-toggle" onclick="toggleLanguage()">EN</button>
+                <button class="mobile-menu-btn">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="page-header">
+        <div class="container">
+            <h1>交通位置</h1>
+            <div class="breadcrumb">
+                <a href="../index.html">首頁</a>
+                <span class="material-symbols-outlined separator">chevron_right</span>
+                <span class="current">交通位置</span>
+            </div>
+        </div>
+    </div>
+
+    <main class="main-layout container">
+        <aside class="sidebar">
+            <ul class="sidebar-menu">
+                <li class="menu-group active">
+                    <div class="group-title">聯絡資訊 <span class="material-symbols-outlined">expand_more</span></div>
+                    <ul class="sub-menu open">
+                        <li><a href="#" class="active">線上表單留言</a></li>
+                        <li><a href="#">全球經銷商據點</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </aside>
+
+        <section class="content-area">
+            <h2 class="section-title">與我們聯繫 (Contact Us)</h2>
+            <div class="contact-layout">
+                <!-- Contact Form -->
+                <div class="contact-form-container">
+                    <form action="#" method="POST" onsubmit="alert('表單已送出，我們將盡快與您聯繫！'); return false;">
+                        <div class="form-group">
+                            <label for="name">姓名 / 公司名稱 *</label>
+                            <input type="text" id="name" class="form-control" required placeholder="請輸入您的姓名或公司名稱">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">電子信箱 *</label>
+                            <input type="email" id="email" class="form-control" required placeholder="example@domain.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">聯絡電話</label>
+                            <input type="tel" id="phone" class="form-control" placeholder="請輸入聯絡電話">
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">主旨 *</label>
+                            <select id="subject" class="form-control" required>
+                                <option value="">請選擇需求類型</option>
+                                <option value="sales">產品詢價 / 購買</option>
+                                <option value="support">技術支援 / 維修</option>
+                                <option value="partner">經銷商合作</option>
+                                <option value="other">其他問題</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">需求內容 *</label>
+                            <textarea id="message" class="form-control" rows="5" required placeholder="請詳細描述您的需求..."></textarea>
+                        </div>
+                        <button type="submit" class="btn-submit">送出表單</button>
+                    </form>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="contact-info-container">
+                    <div class="contact-details">
+                        <h3>巨控自動化股份有限公司</h3>
+                        <ul>
+                            <li>
+                                <span class="material-symbols-outlined">location_on</span>
+                                <div>
+                                    <strong>總部地址</strong><br>
+                                    (80673) 高雄市前鎮區新衙路286號-3號8F-1<br>
+                                    (8F.-1, No.286-3, Xinya Rd., Qianzhen Dist., Kaohsiung City 80673, Taiwan)
+                                </div>
+                            </li>
+                            <li>
+                                <span class="material-symbols-outlined">call</span>
+                                <div>
+                                    <strong>聯絡電話</strong><br>
+                                    +886-7-821-6370
+                                </div>
+                            </li>
+                            <li>
+                                <span class="material-symbols-outlined">fax</span>
+                                <div>
+                                    <strong>傳真號碼</strong><br>
+                                    +886-7-812-6559
+                                </div>
+                            </li>
+                            <li>
+                                <span class="material-symbols-outlined">mail</span>
+                                <div>
+                                    <strong>電子信箱</strong><br>
+                                    sales@yottacontrol.com.tw
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Google Map Placeholder -->
+                    <div class="map-container">
+                        <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80&w=600&h=300" alt="Map Placeholder" style="width: 100%; height: 100%; object-fit: cover;">
+                        <!-- You can replace the img tag with an actual Google Maps iframe -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <img src="../Html_Data/assets/logo.png" alt="Yotta Logo" class="footer-logo">
+                    <p class="footer-about" data-i18n="footer.about">
+                        Yottacontrol 致力於提供高品質的自動化控制產品，包含控制器、I/O模組及工業電腦，協助企業實現工業 4.0 的智慧工廠願景。
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4 data-i18n="footer.links">快速連結</h4>
+                    <ul id="footerNavLinks">
+                        <!-- JS renderMainMenu() -->
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 data-i18n="footer.contact">聯絡資訊</h4>
+                    <ul class="contact-info">
+                        <li>
+                            <span class="material-symbols-outlined">location_on</span>
+                            <span>(80673) 高雄市前鎮區新衙路286號-3號8F-1</span>
+                        </li>
+                        <li>
+                            <span class="material-symbols-outlined">call</span>
+                            <span>+886-7-821-6370</span>
+                        </li>
+                        <li>
+                            <span class="material-symbols-outlined">fax</span>
+                            <span>+886-7-812-6559</span>
+                        </li>
+                        <li>
+                            <span class="material-symbols-outlined">mail</span>
+                            <span>sales@yottacontrol.com.tw</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p data-i18n="footer.copyright">&copy; 2026 Yottacontrol. 保留所有權利。</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../Html_Data/js/i18n.js"></script>
+    <script src="../Html_Data/js/message.js"></script>
+    <script src="../Html_Data/js/data.js"></script>
+    <script src="../Html_Data/js/common.js"></script>
+    <script src="../Html_Data/js/script.js"></script>
+</body>
+</html>

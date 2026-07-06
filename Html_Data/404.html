@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 找不到網頁 - Yotta Control</title>
+    <link rel="stylesheet" href="css/index.css">
+    <style>
+        .error-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 60vh;
+            text-align: center;
+            padding: 20px;
+        }
+        .error-code {
+            font-size: 100px;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin: 0;
+            line-height: 1;
+        }
+        .error-title {
+            font-size: 28px;
+            color: var(--text-dark);
+            margin: 20px 0;
+        }
+        .error-desc {
+            font-size: 16px;
+            color: var(--text-light);
+            margin-bottom: 30px;
+            max-width: 500px;
+        }
+        .btn-home {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .btn-home:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 86, 179, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="../index.html" class="logo-link">
+                    <img src="assets/logo.png" alt="Yotta Logo" class="logo">
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="error-container">
+        <h1 class="error-code">404</h1>
+        <h2 class="error-title">找不到此網頁</h2>
+        <p class="error-desc">抱歉，您所尋找的網頁可能已被移除、重新命名或暫時無法使用。請確認您點擊的連結是否正確，或返回首頁繼續瀏覽。</p>
+        <a href="../index.html" class="btn-home">返回首頁</a>
+    </main>
+</body>
+</html>
