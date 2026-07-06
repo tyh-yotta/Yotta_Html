@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A-8012 應用範例-2</title>
+    <!-- Google Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="../../css/index.css">
+    
+    <!-- Iframe 專屬微調樣式 (拿掉首尾，專注於內容) -->
+    <style>
+        body {
+            background-color: var(--bg-page);
+            padding: 40px;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+        .solution-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--border-color);
+            flex-shrink: 0;
+        }
+        .solution-header .icon {
+            font-size: 42px;
+            color: var(--primary-color);
+        }
+        .solution-title {
+            color: var(--primary-color);
+            margin: 0;
+            font-size: 32px;
+        }
+        .solution-content {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+        .solution-content > p {
+            line-height: 1.8;
+            color: var(--text-main);
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+        .solution-list {
+            margin-left: 20px;
+            margin-bottom: 25px;
+            flex-shrink: 0;
+        }
+        .solution-list li {
+            margin-bottom: 15px;
+            color: var(--text-main);
+            font-size: 0.9rem;
+        }
+        .solution-img-wrapper {
+            background: var(--bg-page);
+            padding: 30px;
+            border-radius: var(--radius-md);
+            text-align: center;
+            border: 1px dashed var(--border-color);
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 200px;
+        }
+        .solution-img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="solution-header">
+        <span class="material-symbols-outlined icon">settings_suggest</span>
+        <h1 class="solution-title">A-8012 應用範例-2</h1>
+    </div>
+    
+    <div class="solution-content">
+        <p>這是 A-8012 的簡易應用範例 2，展示進階的輸入輸出連動控制。
+        
+        <p><strong>主要應用優勢：</strong></p>
+        <ul class="solution-list">
+            <li><strong>分散式架構：</strong> 大幅減少現場配線長度，降低建置與維護成本。</li>
+            <li><strong>高抗干擾能力：</strong> 內建雙重隔離保護設計，無懼工廠強電磁干擾環境。</li>
+            <li><strong>即時性：</strong> 即時掌握產線良率與機台狀況，快速發現並排除異常，優化生產效率。</li>
+        </ul>
+        
+        <div class="solution-img-wrapper">
+            <!-- 這裡先用產品預設圖代替解決方案情境圖 -->
+            <img src="../../assets/product.png" alt="廠務自動化示意圖" class="solution-img">
+        </div>
+    </div>
+
+</body>
+</html>

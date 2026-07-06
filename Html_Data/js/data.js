@@ -1,7 +1,137 @@
 ﻿// Shared Product Database
 const productData = [
     { 
-        model: "A-1012", 
+        model: "A-8012", series: "A-80x", 
+        image: "Html_Data/assets/A-8012.png", 
+        desc: "高可靠度的工業控制 I/O 解決方案，適用於多種自動化場景。",
+        desc_en: "High-reliability industrial control I/O solution, suitable for various automation scenarios.",
+        di: "2 ch", do: "2 ch (Relay)", ai: "4 ch", ao: "2 ch", comm: "RS-485",
+        features: ["內建看門狗計時器 (Watchdog Timer)", "支援標準 Modbus RTU 協定", "寬電壓輸入範圍 10~30VDC", "雙重隔離保護設計", "DIN Rail 導軌安裝"],
+        features_en: ["Built-in Watchdog Timer", "Supports standard Modbus RTU", "Wide voltage input 10~30VDC", "Dual isolation protection", "DIN Rail mounting"],
+        applications: [
+            { name: "A-8012 應用範例-1", name_en: "A-8012 Application Example 1", link: "Html_Data/solutions/A-8012/Application_Example_1.html" },
+            { name: "A-8012 應用範例-2", name_en: "A-8012 Application Example 2", link: "Html_Data/solutions/A-8012/Application_Example_2.html" },
+            { name: "A-8012 應用範例-3", name_en: "A-8012 Application Example 3", link: "Html_Data/solutions/A-8012/Application_Example_3.html" }
+        ],
+        documents: [
+            // 1. 全模組共用的文件
+            { name: "Yotta 產品保固條款", name_en: "Yotta Warranty Policy", icon: "📄", link: "Html_Data/Manuals/shared_all/warranty.pdf" },
+            { name: "Yotta Utility 軟體手冊", name_en: "Yotta Utility Manual", icon: "📘", link: "Html_Data/Manuals/shared_all/utility_manual.pdf" },
+            // 2. 與 A-8019 共用的文件
+            { name: "RS-485 通訊協定手冊", name_en: "RS-485 Protocol Manual", icon: "📄", link: "Html_Data/Manuals/shared_A10x/rs485_protocol.pdf" },
+            { name: "模組基礎配線指南", name_en: "Wiring Guide", icon: "📘", link: "Html_Data/Manuals/shared_A10x/wiring_guide.pdf" },
+            // 3. A-8012 獨立專屬的文件
+            { name: "A-8012 產品規格書", name_en: "A-8012 Datasheet", icon: "📄", link: "Html_Data/Manuals/A-8012/A-8012_Datasheet.pdf" },
+            { name: "A-8012 快速入門手冊", name_en: "A-8012 Quick Start", icon: "📘", link: "Html_Data/Manuals/A-8012/A-8012_QuickStart.pdf" }
+        ],
+        wiringImage: "Html_Data/assets/A-8012.png",
+        manualLink: "#",
+		// A-8012 右側側邊 Tab的文件
+        tabs: [
+            {
+                id: "tab-docs",
+                title: "技術文件",
+                title_en: "Tech Docs",
+                content: `<h3 style="margin-bottom: 15px; color: var(--primary-color);">技術文件下載</h3>
+                          <p style="color: var(--text-light); margin-bottom: 20px;">取得 A-8012 最新的產品規格書與使用手冊，以協助您快速設定與操作。</p>
+                          <div id="dynamicDocsContainer"></div>`,
+                content_en: `<h3 style="margin-bottom: 15px; color: var(--primary-color);">Technical Documents</h3>
+                             <p style="color: var(--text-light); margin-bottom: 20px;">Get the latest spec sheets and user manuals for A-8012.</p>
+                             <div id="dynamicDocsContainer"></div>`
+            },
+            {
+                id: "tab-faq",
+                title: "常見問題",
+                title_en: "FAQ",
+                content: `<h3 style="margin-bottom: 15px; color: var(--primary-color);">常見問題 (FAQ)</h3>
+                          <ul style="color: var(--text-light); padding-left: 20px; line-height: 1.8;">
+                              <li><strong>Q: A-8012 如何設定 Modbus ID?</strong><br>A: 請使用 Yotta Utility 軟體透過 RS-485 介面進行設定。預設 ID 為 1。</li>
+                              <li style="margin-top: 10px;"><strong>Q: 支援的波特率有哪些?</strong><br>A: 支援 1200 bps 至 115200 bps，出廠預設為 9600 bps。</li>
+                          </ul>`,
+                content_en: `<h3 style="margin-bottom: 15px; color: var(--primary-color);">FAQ</h3>
+                             <ul style="color: var(--text-light); padding-left: 20px; line-height: 1.8;">
+                                 <li><strong>Q: How to set Modbus ID?</strong><br>A: Use Yotta Utility software via RS-485. Default ID is 1.</li>
+                                 <li style="margin-top: 10px;"><strong>Q: Supported baud rates?</strong><br>A: 1200 to 115200 bps, default is 9600 bps.</li>
+                             </ul>`
+            },
+            {
+                id: "tab-wiring",
+                title: "接線圖",
+                title_en: "Wiring",
+                content: `<h3 style="margin-bottom: 15px; color: var(--primary-color);">產品接線圖</h3>
+                          <div class="wiring-container">
+                              <img src="Html_Data/assets/A-8012.png" alt="A-8012 接線圖" class="wiring-img" style="max-width: 100%; height: auto;">
+                          </div>`,
+                content_en: `<h3 style="margin-bottom: 15px; color: var(--primary-color);">Wiring Diagram</h3>
+                             <div class="wiring-container">
+                                 <img src="Html_Data/assets/A-8012.png" alt="A-8012 Wiring" class="wiring-img" style="max-width: 100%; height: auto;">
+                             </div>`
+            },
+            {
+                id: "tab-apps",
+                title: "產品應用",
+                title_en: "Applications",
+                content: `<h3 style="margin-bottom: 15px; color: var(--primary-color);">產品應用</h3>
+                          <div class="application-tags" id="detailApplications"></div>`,
+                content_en: `<h3 style="margin-bottom: 15px; color: var(--primary-color);">Applications</h3>
+                             <div class="application-tags" id="detailApplications"></div>`
+            }
+        ]
+    },
+	{
+	    model: "A-8019", series: "A-80x", 
+        image: "Html_Data/assets/A-8019.png", 
+        desc: "高可靠度的工業控制 I/O 解決方案，適用於多種自動化場景。",
+        desc_en: "High-reliability industrial control I/O solution, suitable for various automation scenarios.",
+        di: "-", do: "-", ai: "8 ch", ao: "-", comm: "RS-485",
+        features: ["內建看門狗計時器 (Watchdog Timer)", "支援標準 Modbus RTU 協定", "寬電壓輸入範圍 10~30VDC", "雙重隔離保護設計", "DIN Rail 導軌安裝"],
+        features_en: ["Built-in Watchdog Timer", "Supports standard Modbus RTU", "Wide voltage input 10~30VDC", "Dual isolation protection", "DIN Rail mounting"],
+        applications: [
+            { name: "A-8019 應用範例-1", name_en: "A-8019 Application Example 1", link: "Html_Data/solutions/A-8019/Application_Example_1.html" },
+            { name: "A-8019 應用範例-2", name_en: "A-8019 Application Example 2", link: "Html_Data/solutions/A-8019/Application_Example_2.html" },
+            { name: "A-8019 應用範例-3", name_en: "A-8019 Application Example 3", link: "Html_Data/solutions/A-8019/Application_Example_3.html" },
+            { name: "A-8019 應用範例-4", name_en: "A-8019 Application Example 4", link: "Html_Data/solutions/A-8012/Application_Example_2.html" }
+        ],
+        documents: [
+            // 1. 全模組共用的文件
+            { name: "Yotta 產品保固條款", name_en: "Yotta Warranty Policy", icon: "📄", link: "Html_Data/Manuals/shared_all/warranty.pdf" },
+            { name: "Yotta Utility 軟體手冊", name_en: "Yotta Utility Manual", icon: "📘", link: "Html_Data/Manuals/shared_all/utility_manual.pdf" },
+            // 2. 與 A-8019 共用的文件
+            { name: "RS-485 通訊協定手冊", name_en: "RS-485 Protocol Manual", icon: "📄", link: "Html_Data/Manuals/shared_A10x/rs485_protocol.pdf" },
+            { name: "模組基礎配線指南", name_en: "Wiring Guide", icon: "📘", link: "Html_Data/Manuals/shared_A10x/wiring_guide.pdf" },
+            // 3. A-8012 獨立專屬的文件
+            { name: "A-1012 產品規格書", name_en: "A-1012 Datasheet", icon: "📄", link: "Html_Data/Manuals/A-1012/A-1012_Datasheet.pdf" },
+            { name: "A-1012 快速入門手冊", name_en: "A-1012 Quick Start", icon: "📘", link: "Html_Data/Manuals/A-1012/A-1012_QuickStart.pdf" }
+        ],
+        wiringImage: "Html_Data/assets/A-8012.png",
+        manualLink: "#",
+		// A-8019 右側側邊 Tab的文件
+        tabs: [
+            {
+                id: "tab-docs",
+                title: "技術文件",
+                title_en: "Tech Docs",
+                content: `<h3 style="margin-bottom: 15px; color: var(--primary-color);">技術文件下載</h3>
+                          <p style="color: var(--text-light); margin-bottom: 20px;">取得 A-1012 最新的產品規格書與使用手冊，以協助您快速設定與操作。</p>
+                          <div id="dynamicDocsContainer"></div>`,
+                content_en: `<h3 style="margin-bottom: 15px; color: var(--primary-color);">Technical Documents</h3>
+                             <p style="color: var(--text-light); margin-bottom: 20px;">Get the latest spec sheets and user manuals for A-1012.</p>
+                             <div id="dynamicDocsContainer"></div>`
+            },
+            {
+                id: "tab-apps",
+                title: "產品應用",
+                title_en: "Applications",
+                content: `<h3 style="margin-bottom: 15px; color: var(--primary-color);">產品應用</h3>
+                          <div class="application-tags" id="detailApplications"></div>`,
+                content_en: `<h3 style="margin-bottom: 15px; color: var(--primary-color);">Applications</h3>
+                             <div class="application-tags" id="detailApplications"></div>`
+            }
+        ]
+    },
+
+    { 
+        model: "A-1012", series: "A-10x", 
         image: "Html_Data/assets/A-1012.png", 
         desc: "高可靠度的工業控制 I/O 解決方案，適用於多種自動化場景。",
         desc_en: "High-reliability industrial control I/O solution, suitable for various automation scenarios.",
@@ -13,6 +143,17 @@ const productData = [
             { name: "水質監測系統", name_en: "Water Monitoring", link: "Html_Data/solutions/shared/water.html" },
             { name: "智慧農業溫室控制", name_en: "Smart Greenhouse", link: "Html_Data/solutions/shared/agri.html" }
         ],
+        documents: [
+            // 1. 全模組共用的文件
+            { name: "Yotta 產品保固條款", name_en: "Yotta Warranty Policy", icon: "📄", link: "Html_Data/Manuals/shared_all/warranty.pdf" },
+            { name: "Yotta Utility 軟體手冊", name_en: "Yotta Utility Manual", icon: "📘", link: "Html_Data/Manuals/shared_all/utility_manual.pdf" },
+            // 2. 與 A-1019 共用的文件
+            { name: "RS-485 通訊協定手冊", name_en: "RS-485 Protocol Manual", icon: "📄", link: "Html_Data/Manuals/shared_A10x/rs485_protocol.pdf" },
+            { name: "模組基礎配線指南", name_en: "Wiring Guide", icon: "📘", link: "Html_Data/Manuals/shared_A10x/wiring_guide.pdf" },
+            // 3. A-1012 獨立專屬的文件
+            { name: "A-1012 產品規格書", name_en: "A-1012 Datasheet", icon: "📄", link: "Html_Data/Manuals/A-1012/A-1012_Datasheet.pdf" },
+            { name: "A-1012 快速入門手冊", name_en: "A-1012 Quick Start", icon: "📘", link: "Html_Data/Manuals/A-1012/A-1012_QuickStart.pdf" }
+        ],
         wiringImage: "Html_Data/assets/A-1012.png",
         manualLink: "#",
         tabs: [
@@ -22,16 +163,10 @@ const productData = [
                 title_en: "Tech Docs",
                 content: `<h3 style="margin-bottom: 15px; color: var(--primary-color);">技術文件下載</h3>
                           <p style="color: var(--text-light); margin-bottom: 20px;">取得 A-1012 最新的產品規格書與使用手冊，以協助您快速設定與操作。</p>
-                          <div style="display: flex; gap: 15px;">
-                              <a href="#" class="btn btn-primary" style="padding: 8px 16px; font-size: 0.9rem;"><span style="font-size: 1.2rem; margin-right: 5px;">📄</span> 下載規格書</a>
-                              <a href="#" class="btn btn-secondary" style="padding: 8px 16px; font-size: 0.9rem;"><span style="font-size: 1.2rem; margin-right: 5px;">📘</span> 下載使用手冊</a>
-                          </div>`,
+                          <div id="dynamicDocsContainer"></div>`,
                 content_en: `<h3 style="margin-bottom: 15px; color: var(--primary-color);">Technical Documents</h3>
                              <p style="color: var(--text-light); margin-bottom: 20px;">Get the latest spec sheets and user manuals for A-1012.</p>
-                             <div style="display: flex; gap: 15px;">
-                                 <a href="#" class="btn btn-primary" style="padding: 8px 16px; font-size: 0.9rem;"><span style="font-size: 1.2rem; margin-right: 5px;">📄</span> Spec Sheet</a>
-                                 <a href="#" class="btn btn-secondary" style="padding: 8px 16px; font-size: 0.9rem;"><span style="font-size: 1.2rem; margin-right: 5px;">📘</span> User Manual</a>
-                             </div>`
+                             <div id="dynamicDocsContainer"></div>`
             },
             {
                 id: "tab-faq",
@@ -73,7 +208,7 @@ const productData = [
         ]
     },
     { 
-        model: "A-1019", 
+        model: "A-1019", series: "A-10x", 
         image: "Html_Data/assets/A-1019.png", 
         di: "8 ch", do: "-", ai: "8 ch", ao: "-", comm: "RS-485",
         features: ["高密度輸入通道設計", "支援標準 Modbus RTU 協定", "寬電壓輸入 10~30VDC", "雙重隔離保護設計"],
@@ -87,7 +222,7 @@ const productData = [
         manualLink: "#"
     },
     { 
-        model: "A-1051", 
+        model: "A-1051", series: "A-10x", 
         image: "Html_Data/assets/A-1051.png", 
         di: "16 ch", do: "-", ai: "-", ao: "-", comm: "RS-485",
         features: ["16通道數位輸入", "支援乾/濕接點輸入", "光隔離保護設計", "DIN Rail 導軌安裝"],
@@ -101,7 +236,7 @@ const productData = [
         manualLink: "#"
     },
     { 
-        model: "A-1060", 
+        model: "A-1060", series: "A-10x", 
         image: "Html_Data/assets/A-1060.png", 
         di: "-", do: "16 ch (Relay)", ai: "-", ao: "-", comm: "RS-485",
         features: ["16通道繼電器輸出", "大電流負載能力", "通電狀態 LED 指示燈", "支援 Modbus RTU"],
@@ -115,7 +250,7 @@ const productData = [
         manualLink: "#"
     },
     { 
-        model: "A-1055", 
+        model: "A-1055", series: "A-10x", 
         image: "Html_Data/assets/A-1055.png", 
         di: "8 ch", do: "8 ch (Isolated)", ai: "-", ao: "-", comm: "RS-485",
         features: ["數位輸入/輸出混合模組", "高防護隔離設計", "支援標準 Modbus RTU 協定", "寬溫工作範圍 (-20~75°C)"],
@@ -129,7 +264,7 @@ const productData = [
         manualLink: "#"
     },
     { 
-        model: "A-1055S", 
+        model: "A-1055S", series: "A-10x", 
         image: "Html_Data/assets/A-1055S.png", 
         di: "8 ch", do: "8 ch (Solid State)", ai: "-", ao: "-", comm: "RS-485",
         features: ["固態繼電器(SSR)高速輸出", "高防護隔離設計", "無接點磨損壽命長", "支援標準 Modbus RTU 協定"],
@@ -143,7 +278,7 @@ const productData = [
         manualLink: "#"
     },
     { 
-        model: "A-1068", 
+        model: "A-1068", series: "A-10x", 
         image: "Html_Data/assets/A-1068.png", 
         di: "-", do: "8 ch (Relay)", ai: "-", ao: "-", comm: "RS-485",
         features: ["8通道繼電器輸出", "精巧外觀設計", "狀態指示燈", "支援標準 Modbus RTU 協定"],
@@ -156,7 +291,7 @@ const productData = [
         manualLink: "#"
     },
     { 
-        model: "A-1069", 
+        model: "A-1069", series: "A-10x", 
         image: "Html_Data/assets/A-1069.png", 
         di: "8 ch", do: "8 ch (Relay)", ai: "-", ao: "-", comm: "RS-485",
         features: ["8通道輸入/8通道輸出", "高性價比", "高防護隔離設計", "支援標準 Modbus RTU 協定"],
@@ -201,11 +336,11 @@ const categoryData = [
         icon: "expand_less",
         isOpen: true,
         items: [
+            { title_zh: "A-80x 系列(RS485、自帶邏輯)", title_en: "A-80x Series (RS485, Contains logic)", link: "products/products_a80x.html" },
             { title_zh: "A-10x系列(RS485)", title_en: "A-10x Series (RS485)", link: "products/products_a10x.html" },
             { title_zh: "A-12x 系列(WIFI)", title_en: "A-12x Series (WIFI)", link: "#" },
             { title_zh: "A-18x 系列(乙太網路)", title_en: "A-18x Series (Ethernet)", link: "#" },
-            { title_zh: "A-19x 系列(菊花鏈)", title_en: "A-19x Series (Daisy Chain)", link: "#" },
-            { title_zh: "A-80x 系列(RS485,自帶邏輯)", title_en: "A-80x Series (RS485, Contains logic)", link: "#" }
+            { title_zh: "A-19x 系列(菊花鏈)", title_en: "A-19x Series (Daisy Chain)", link: "#" }
         ]
     },
     {

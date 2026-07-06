@@ -79,10 +79,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (tableBody) {
             tableBody.innerHTML = '';
-            productData.forEach(product => {
+            const targetSeries = tableBody.getAttribute('data-series');
+            const filteredData = targetSeries ? productData.filter(p => p.series === targetSeries) : productData;
+
+            filteredData.forEach(product => {
                 const tr = document.createElement('tr');
+                const productUrl = basePath ? `product.html?model=${product.model}` : `products/product.html?model=${product.model}`;
                 tr.innerHTML = `
-                    <td><strong>${product.model}</strong></td>
+                    <td><a href="${productUrl}" style="color: var(--accent-color); text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='var(--primary-color)'" onmouseout="this.style.color='var(--accent-color)'"><strong>${product.model}</strong></a></td>
                     <td>${product.di}</td>
                     <td>${product.do}</td>
                     <td>${product.ai}</td>
@@ -95,7 +99,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (modelGrid) {
             modelGrid.innerHTML = '';
-            productData.forEach(product => {
+            const targetSeries = modelGrid.getAttribute('data-series');
+            const filteredData = targetSeries ? productData.filter(p => p.series === targetSeries) : productData;
+            
+            filteredData.forEach(product => {
                 const card = document.createElement('a');
                 // If we are in root, product page is products/product.html. If in products/, it's just product.html
                 const productUrl = basePath ? `product.html?model=${product.model}` : `products/product.html?model=${product.model}`;
@@ -139,6 +146,27 @@ document.addEventListener('DOMContentLoaded', () => {
         // Update Text & Specs
         document.title = `${product.model} | Yottacontrol`;
         document.getElementById('breadcrumbModel').textContent = product.model;
+
+        // Dynamic breadcrumb series update
+        const breadcrumbSeries = document.getElementById('breadcrumbSeries');
+        if (breadcrumbSeries && product.series) {
+            let matchedSeries = null;
+            categoryData.forEach(cat => {
+                cat.items.forEach(item => {
+                    if ((item.title_en && item.title_en.includes(product.series)) || (item.title_zh && item.title_zh.includes(product.series))) {
+                        matchedSeries = item;
+                    }
+                });
+            });
+            
+            if (matchedSeries) {
+                const linkParts = matchedSeries.link.split('/');
+                const fileName = linkParts[linkParts.length - 1];
+                breadcrumbSeries.href = fileName;
+                breadcrumbSeries.textContent = isEn ? matchedSeries.title_en : matchedSeries.title_zh;
+            }
+        }
+
         document.getElementById('detailTitle').textContent = product.model;
         document.getElementById('detailImage').src = `${basePath}${product.image}`;
         
@@ -171,14 +199,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     title_en: "Tech Docs",
                     content: `<h3 style="margin-bottom: 15px; color: var(--primary-color);">${isEn ? 'Technical Documents' : '技術文件下載'}</h3>
                               <p style="color: var(--text-light); margin-bottom: 20px;">${isEn ? 'Download product specifications and manuals.' : '取得產品規格書與使用手冊，以協助您快速設定與操作。'}</p>
-                              <div style="display: flex; gap: 15px; flex-wrap: wrap;">
-                                  <a href="${specHref}" ${specOnClick} class="btn btn-primary" style="padding: 8px 16px; font-size: 0.9rem;">
-                                      <span style="font-size: 1.2rem; margin-right: 5px;">📄</span> ${isEn ? 'Spec Sheet' : '下載規格書'}
-                                  </a>
-                                  <a href="${manualHref}" ${manualOnClick} class="btn btn-secondary" style="padding: 8px 16px; font-size: 0.9rem;">
-                                      <span style="font-size: 1.2rem; margin-right: 5px;">📘</span> ${isEn ? 'User Manual' : '下載使用手冊'}
-                                  </a>
-                              </div>`
+                              <div id="dynamicDocsContainer"></div>`
                 },
                 {
                     id: "tab-faq",
@@ -226,6 +247,46 @@ document.addEventListener('DOMContentLoaded', () => {
                 pane.innerHTML = tabContent;
                 panesContainer.appendChild(pane);
             });
+
+            // Inject dynamic documents if the container exists
+            const docsContainer = document.getElementById('dynamicDocsContainer');
+            if (docsContainer) {
+                let docsContentHtml = '';
+                if (product.documents && product.documents.length > 0) {
+                    docsContentHtml = '<ul style="list-style: none; padding: 0; margin: 0; border-top: 1px solid var(--border-color);">' + product.documents.map(doc => {
+                        const docName = isEn && doc.name_en ? doc.name_en : doc.name;
+                        const icon = doc.icon || '📄';
+                        const link = doc.link && doc.link !== '#' ? basePath + doc.link : '#';
+                        const onClick = link === '#' ? `onclick="alert(window.currentLang === 'en' ? 'Coming Soon' : '建置中'); return false;"` : `target="_blank"`;
+                        return `<li style="border-bottom: 1px solid var(--border-color);">
+                                    <a href="${link}" ${onClick} style="display: flex; align-items: center; padding: 12px 15px; text-decoration: none; color: var(--text-main); transition: background 0.2s;" onmouseover="this.style.background='rgba(128,128,128,0.1)'" onmouseout="this.style.background='transparent'">
+                                        <span style="font-size: 1.5rem; margin-right: 15px;">${icon}</span>
+                                        <span style="flex-grow: 1; font-weight: 500; font-size: 1.05rem;">${docName}</span>
+                                        <span class="material-symbols-outlined" style="color: var(--primary-color);">download</span>
+                                    </a>
+                                </li>`;
+                    }).join('') + '</ul>';
+                } else {
+                    // Fallback to old specLink / manualLink logic
+                    docsContentHtml = `<ul style="list-style: none; padding: 0; margin: 0; border-top: 1px solid var(--border-color);">
+                        <li style="border-bottom: 1px solid var(--border-color);">
+                            <a href="${specHref}" ${specOnClick} style="display: flex; align-items: center; padding: 12px 15px; text-decoration: none; color: var(--text-main); transition: background 0.2s;" onmouseover="this.style.background='rgba(128,128,128,0.1)'" onmouseout="this.style.background='transparent'">
+                                <span style="font-size: 1.5rem; margin-right: 15px;">📄</span>
+                                <span style="flex-grow: 1; font-weight: 500; font-size: 1.05rem;">${isEn ? 'Spec Sheet' : '下載文件'}</span>
+                                <span class="material-symbols-outlined" style="color: var(--primary-color);">download</span>
+                            </a>
+                        </li>
+                        <li style="border-bottom: 1px solid var(--border-color);">
+                            <a href="${manualHref}" ${manualOnClick} style="display: flex; align-items: center; padding: 12px 15px; text-decoration: none; color: var(--text-main); transition: background 0.2s;" onmouseover="this.style.background='rgba(128,128,128,0.1)'" onmouseout="this.style.background='transparent'">
+                                <span style="font-size: 1.5rem; margin-right: 15px;">📘</span>
+                                <span style="flex-grow: 1; font-weight: 500; font-size: 1.05rem;">${isEn ? 'User Manual' : '下載使用手冊'}</span>
+                                <span class="material-symbols-outlined" style="color: var(--primary-color);">download</span>
+                            </a>
+                        </li>
+                    </ul>`;
+                }
+                docsContainer.innerHTML = docsContentHtml;
+            }
         }
 
         // Update Features
