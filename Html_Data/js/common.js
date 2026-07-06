@@ -61,31 +61,68 @@ function renderSidebar() {
     const isSubfolder = ['products', 'about', 'news', 'support', 'contact', 'solutions', 'location'].includes(pathParts[pathParts.length - 2]);
     const basePath = isSubfolder ? '../' : '';
     let html = '';
+    
+    const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+    const urlParams = new URLSearchParams(window.location.search);
+    const modelQuery = urlParams.get('model');
+    
+    let activeSeries = null;
+    if (currentPath === 'product.html' && modelQuery && typeof productData !== 'undefined') {
+        const product = productData.find(p => p.model === modelQuery);
+        if (product && product.series) {
+            activeSeries = product.series;
+        }
+    }
+
+    let anyItemActive = false;
 
     categoryData.forEach(group => {
+        let hasActiveItem = false;
+        let itemsHtml = '';
+        
+        group.items.forEach(item => {
+            const itemTitle = isEn ? item.title_en : item.title_zh;
+            const itemPath = item.link.split('/').pop();
+            
+            let isItemActive = false;
+            if (currentPath === 'product.html' && activeSeries) {
+                if ((item.title_en && item.title_en.includes(activeSeries)) || (item.title_zh && item.title_zh.includes(activeSeries))) {
+                    isItemActive = true;
+                }
+            } else {
+                if (itemPath === currentPath && itemPath !== '#') {
+                    isItemActive = true;
+                }
+            }
+            
+            if (isItemActive) {
+                hasActiveItem = true;
+                anyItemActive = true;
+            }
+            
+            const itemActiveClass = isItemActive ? 'active' : '';
+            itemsHtml += `<li><a href="${basePath}${item.link}" class="${itemActiveClass}">${itemTitle}</a></li>`;
+        });
+        
         const groupTitle = isEn ? group.title_en : group.title_zh;
-        // Keep I/O Modules open if we are on index/product page
-        const isOpen = group.isOpen ? 'open' : '';
-        const icon = group.isOpen ? 'expand_less' : 'expand_more';
-        const activeClass = group.isOpen ? 'active' : '';
+        // Determine if group should be open
+        let isGroupOpen = hasActiveItem;
+        // If we are on index.html or another page without any active sidebar item, fallback to default isOpen
+        if (!hasActiveItem && ['index.html', 'about.html', 'contact.html', 'news.html'].includes(currentPath)) {
+            isGroupOpen = group.isOpen;
+        }
+
+        const isOpenClass = isGroupOpen ? 'open' : '';
+        const icon = isGroupOpen ? 'expand_less' : 'expand_more';
+        const activeClass = isGroupOpen ? 'active' : '';
 
         html += `
             <li class="menu-group ${activeClass}">
                 <div class="group-title" onclick="toggleSidebarGroup(this)">
                     ${groupTitle} <span class="material-symbols-outlined icon">${icon}</span>
                 </div>
-                <ul class="sub-menu ${isOpen}">`;
-        
-        group.items.forEach(item => {
-            const itemTitle = isEn ? item.title_en : item.title_zh;
-            // Highlight current page dynamically by checking pathname
-            const itemPath = item.link.split('/').pop();
-            const currentPath = window.location.pathname.split('/').pop() || 'index.html';
-            const itemActiveClass = (itemPath === currentPath && itemPath !== '#') ? 'active' : '';
-            html += `<li><a href="${basePath}${item.link}" class="${itemActiveClass}">${itemTitle}</a></li>`;
-        });
-
-        html += `
+                <ul class="sub-menu ${isOpenClass}">
+                    ${itemsHtml}
                 </ul>
             </li>
         `;

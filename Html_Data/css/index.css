@@ -542,11 +542,13 @@ ul {
     word-wrap: break-word;
 }
 
-.spec-table th:first-child,
-.spec-table td:first-child {
-    width: 15%;
-    min-width: 100px;
-}
+/* Spec Table Column Widths */
+.spec-table th:nth-child(1), .spec-table td:nth-child(1) { width: 18%; min-width: 80px; }
+.spec-table th:nth-child(2), .spec-table td:nth-child(2) { width: 15%; }
+.spec-table th:nth-child(3), .spec-table td:nth-child(3) { width: 22%; }
+.spec-table th:nth-child(4), .spec-table td:nth-child(4) { width: 15%; }
+.spec-table th:nth-child(5), .spec-table td:nth-child(5) { width: 15%; }
+.spec-table th:nth-child(6), .spec-table td:nth-child(6) { width: 15%; }
 
 .summary-table th,
 .summary-table td {

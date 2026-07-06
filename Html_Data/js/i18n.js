@@ -1,4 +1,4 @@
-const translations = {
+﻿const translations = {
     "zh": {
         "title.index": "Yottacontrol | 專業工業自動化設備製造商",
         "title.about": "關於我們 | Yottacontrol",
@@ -6,6 +6,9 @@ const translations = {
         "title.support": "技術支援 | Yottacontrol",
         "title.products": "產品介紹 | Yottacontrol",
         "title.a10x": "A-10x 系列 I/O 模組 | Yottacontrol",
+        "title.a80x": "A-80x 系列 I/O 模組 | Yottacontrol",
+        "index.hero_title_a80x": "A-80x 系列(RS485,自帶邏輯)",
+        "index.intro_desc_a80x": "A-80x 系列提供多樣化的 I/O 配置並自帶邏輯功能，支援標準 Modbus RTU 通訊協定，具備卓越的抗干擾能力與雙重隔離保護，是工廠自動化與環境監控的最佳選擇。",
         "title.contact": "聯絡我們 | Yottacontrol",
         "title.location": "交通位置 | Yottacontrol",
         "search.placeholder": "搜尋產品...",
@@ -48,6 +51,9 @@ const translations = {
         "title.support": "Support | Yottacontrol",
         "title.products": "Products | Yottacontrol",
         "title.a10x": "A-10x Series I/O Modules | Yottacontrol",
+        "title.a80x": "A-80x Series I/O Modules | Yottacontrol",
+        "index.hero_title_a80x": "A-80x Series (RS485, Built-in logic)",
+        "index.intro_desc_a80x": "A-80x Series provides versatile I/O with built-in logic control, supports Modbus RTU, features excellent anti-interference and dual isolation. Best choice for DCS.",
         "title.contact": "Contact Us | Yottacontrol",
         "title.location": "Location | Yottacontrol",
         "search.placeholder": "Search...",

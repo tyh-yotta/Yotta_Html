@@ -1,5 +1,37 @@
-﻿// Shared Product Database
+// Shared Product Database
 const productData = [
+	// A-9N GUI
+	{
+	    model: "A-9N GUI", series: "A-9N", 
+        image: "Html_Data/assets/A-9N(GUI).png", 
+        desc: "邊緣運算器，適用於各種自動化與物聯網應用。 (Edge Computing GUI)",
+        desc_en: "Edge Computing GUI, suitable for various automation and IoT applications.",
+        di: "-", do: "-", ai: "-", ao: "-", comm: "Ethernet / Wi-Fi / RS-485",
+        features: ["內建看門狗計時器 (Watchdog Timer)", "支援標準 Modbus TCP/RTU", "寬電壓輸入範圍 10~30VDC", "雙重隔離保護設計", "DIN Rail 導軌安裝"],
+        features_en: ["Built-in Watchdog Timer", "Supports standard Modbus TCP/RTU", "Wide voltage input 10~30VDC", "Dual isolation protection", "DIN Rail mounting"],
+        applications: [
+        ],
+        documents: [
+            { name: "A-9N GUI 型錄", name_en: "A-9N GUI Catalog", icon: "menu_book", link: "https://drive.google.com/file/d/1rlMkm_9tSAGq-q6bDzf3QS_jLd3q91yz/view?usp=drive_link" },
+            { name: "A-9N GUI 說明書", name_en: "A-9N GUI Manual", icon: "book", link: "https://drive.google.com/file/d/16StGJNDjK63S_0CRgXa5I6ecmwMw95zV/view?usp=drive_link" }
+        ],
+        wiringImage: "",
+        manualLink: "#",
+		// A-9N GUI 右側 Tab區
+        tabs: [
+            {
+                id: "tab-overview",
+                title: "產品總覽",
+                title_en: "Overview",
+                content: `
+                    <h3 style="margin-bottom: 15px; color: var(--primary-color);">A-9N GUI 邊緣運算器</h3>
+                    <img src="https://m1.hocom.tw/Uploads/userfiles/images/1000163_eh202vzdkb1w7ad.png" style="width:100%; margin-bottom: 20px; border-radius: 8px;">
+                    <img src="https://m1.hocom.tw/Uploads/userfiles/images/1000163_dy3axpbt9x7katq.png" style="width:100%; margin-bottom: 20px; border-radius: 8px;">
+                    <img src="https://m1.hocom.tw/Uploads/userfiles/images/1000163_pu58d7fgss4m04k.png" style="width:100%; margin-bottom: 20px; border-radius: 8px;">
+                `
+            }
+        ]
+    },
     { 
         model: "A-8012", series: "A-80x", 
         image: "Html_Data/assets/A-8012.png", 
@@ -130,6 +162,254 @@ const productData = [
         ]
     },
 
+	// A-8051
+	{
+	    model: "A-8051", series: "A-80x", 
+        image: "Html_Data/assets/A-8051.png", 
+        desc: "高可靠度的工業控制 I/O 解決方案，適用於多種自動化場景。",
+        desc_en: "High-reliability industrial control I/O solution, suitable for various automation scenarios.",
+        di: "16 ch", do: "-", ai: "-", ao: "-", comm: "RS-485",
+        features: ["內建看門狗計時器 (Watchdog Timer)", "支援標準 Modbus RTU 協定", "寬電壓輸入範圍 10~30VDC", "雙重隔離保護設計", "DIN Rail 導軌安裝"],
+        features_en: ["Built-in Watchdog Timer", "Supports standard Modbus RTU", "Wide voltage input 10~30VDC", "Dual isolation protection", "DIN Rail mounting"],
+        applications: [
+            { name: "A-8051 應用範例-1", name_en: "A-8051 Application Example 1", link: "Html_Data/solutions/A-8051/Application_Example_1.html" }
+        ],
+        documents: [
+            // 1. 全模組共用的文件
+            { name: "Yotta 產品保固條款", name_en: "Yotta Warranty Policy", icon: "📄", link: "Html_Data/Manuals/shared_all/warranty.pdf" },
+            { name: "Yotta Utility 軟體手冊", name_en: "Yotta Utility Manual", icon: "📘", link: "Html_Data/Manuals/shared_all/utility_manual.pdf" },
+            // 2. 與 A-8019 共用的文件
+            { name: "RS-485 通訊協定手冊", name_en: "RS-485 Protocol Manual", icon: "📄", link: "Html_Data/Manuals/shared_A10x/rs485_protocol.pdf" },
+            { name: "模組基礎配線指南", name_en: "Wiring Guide", icon: "📘", link: "Html_Data/Manuals/shared_A10x/wiring_guide.pdf" },
+            // 3. A-8012 獨立專屬的文件
+            { name: "A-1012 產品規格書", name_en: "A-1012 Datasheet", icon: "📄", link: "Html_Data/Manuals/A-1012/A-1012_Datasheet.pdf" },
+            { name: "A-1012 快速入門手冊", name_en: "A-1012 Quick Start", icon: "📘", link: "Html_Data/Manuals/A-1012/A-1012_QuickStart.pdf" }
+        ],
+        wiringImage: "Html_Data/assets/A-8051.png",
+        manualLink: "#",
+		// A-8051 右側側邊 Tab的文件
+        tabs: [
+            {
+                id: "tab-docs",
+                title: "技術文件",
+                title_en: "Tech Docs",
+                content: `<h3 style="margin-bottom: 15px; color: var(--primary-color);">技術文件下載</h3>
+                          <p style="color: var(--text-light); margin-bottom: 20px;">取得 A-1012 最新的產品規格書與使用手冊，以協助您快速設定與操作。</p>
+                          <div id="dynamicDocsContainer"></div>`,
+                content_en: `<h3 style="margin-bottom: 15px; color: var(--primary-color);">Technical Documents</h3>
+                             <p style="color: var(--text-light); margin-bottom: 20px;">Get the latest spec sheets and user manuals for A-1012.</p>
+                             <div id="dynamicDocsContainer"></div>`
+            },
+            {
+                id: "tab-apps",
+                title: "產品應用",
+                title_en: "Applications",
+                content: `<h3 style="margin-bottom: 15px; color: var(--primary-color);">產品應用</h3>
+                          <div class="application-tags" id="detailApplications"></div>`,
+                content_en: `<h3 style="margin-bottom: 15px; color: var(--primary-color);">Applications</h3>
+                             <div class="application-tags" id="detailApplications"></div>`
+            }
+        ]
+    },
+		
+	// A-8051+
+	{
+	    model: "A-8051+", series: "A-80x", 
+        image: "Html_Data/assets/A-8051.png", 
+        desc: "高可靠度的工業控制 I/O 解決方案，適用於多種自動化場景。",
+        desc_en: "High-reliability industrial control I/O solution, suitable for various automation scenarios.",
+        di: "16 ch", do: "-", ai: "-", ao: "-", comm: "RS-485(isolated)",
+        features: ["內建看門狗計時器 (Watchdog Timer)", "支援標準 Modbus RTU 協定", "寬電壓輸入範圍 10~30VDC", "雙重隔離保護設計", "DIN Rail 導軌安裝"],
+        features_en: ["Built-in Watchdog Timer", "Supports standard Modbus RTU", "Wide voltage input 10~30VDC", "Dual isolation protection", "DIN Rail mounting"],
+        applications: [
+            { name: "A-8051+ 應用範例-1", name_en: "A-8051+ Application Example 1", link: "Html_Data/solutions/A-8051/Application_Example_1.html" }
+        ],
+        documents: [
+        ],
+        wiringImage: "Html_Data/assets/A-8051+.png",
+        manualLink: "#",
+		// A-8051+ 右側側邊 Tab的文件
+        tabs: [
+        ]
+    },
+	
+	// A-8055
+	{
+	    model: "A-8055", series: "A-80x", 
+        image: "Html_Data/assets/A-8055.png", 
+        desc: "高可靠度的工業控制 I/O 解決方案，適用於多種自動化場景。",
+        desc_en: "High-reliability industrial control I/O solution, suitable for various automation scenarios.",
+        di: "8 ch", do: "8 ch (Sink Transistor)", ai: "-", ao: "-", comm: "RS-485",
+        features: ["內建看門狗計時器 (Watchdog Timer)", "支援標準 Modbus RTU 協定", "寬電壓輸入範圍 10~30VDC", "雙重隔離保護設計", "DIN Rail 導軌安裝"],
+        features_en: ["Built-in Watchdog Timer", "Supports standard Modbus RTU", "Wide voltage input 10~30VDC", "Dual isolation protection", "DIN Rail mounting"],
+        applications: [
+            { name: "A-8055 應用範例-1", name_en: "A-8055 Application Example 1", link: "Html_Data/solutions/A-8055/Application_Example_1.html" }
+        ],
+        documents: [
+            // 1. 全模組共用的文件
+            { name: "Yotta 產品保固條款", name_en: "Yotta Warranty Policy", icon: "📄", link: "Html_Data/Manuals/shared_all/warranty.pdf" },
+            { name: "Yotta Utility 軟體手冊", name_en: "Yotta Utility Manual", icon: "📘", link: "Html_Data/Manuals/shared_all/utility_manual.pdf" },
+            // 2. 與 A-8019 共用的文件
+            { name: "RS-485 通訊協定手冊", name_en: "RS-485 Protocol Manual", icon: "📄", link: "Html_Data/Manuals/shared_A10x/rs485_protocol.pdf" },
+            { name: "模組基礎配線指南", name_en: "Wiring Guide", icon: "📘", link: "Html_Data/Manuals/shared_A10x/wiring_guide.pdf" },
+            // 3. A-8012 獨立專屬的文件
+            { name: "A-1012 產品規格書", name_en: "A-1012 Datasheet", icon: "📄", link: "Html_Data/Manuals/A-1012/A-1012_Datasheet.pdf" },
+            { name: "A-1012 快速入門手冊", name_en: "A-1012 Quick Start", icon: "📘", link: "Html_Data/Manuals/A-1012/A-1012_QuickStart.pdf" }
+        ],
+        wiringImage: "Html_Data/assets/A-8055.png",
+        manualLink: "#",
+		// A-8055 右側側邊 Tab的文件
+        tabs: [
+        ]
+    },
+	
+	// A-8055S
+	{
+	    model: "A-8055S", series: "A-80x", 
+        image: "Html_Data/assets/A-8055S.png", 
+        desc: "高可靠度的工業控制 I/O 解決方案，適用於多種自動化場景。",
+        desc_en: "High-reliability industrial control I/O solution, suitable for various automation scenarios.",
+        di: "8 ch", do: "8 ch (Souce Transistor)", ai: "-", ao: "-", comm: "RS-485",
+        features: ["內建看門狗計時器 (Watchdog Timer)", "支援標準 Modbus RTU 協定", "寬電壓輸入範圍 10~30VDC", "雙重隔離保護設計", "DIN Rail 導軌安裝"],
+        features_en: ["Built-in Watchdog Timer", "Supports standard Modbus RTU", "Wide voltage input 10~30VDC", "Dual isolation protection", "DIN Rail mounting"],
+        applications: [
+            { name: "A-8055S 應用範例-1", name_en: "A-8055S Application Example 1", link: "Html_Data/solutions/A-8055S/Application_Example_1.html" }
+        ],
+        documents: [
+        ],
+        wiringImage: "Html_Data/assets/A-8055S.png",
+        manualLink: "#",
+		// A-8055S 右側側邊 Tab的文件
+        tabs: [
+        ]
+    },
+	
+	// A-8057
+	{
+	    model: "A-8057", series: "A-80x", 
+        image: "Html_Data/assets/A-8057.png", 
+        desc: "高可靠度的工業控制 I/O 解決方案，適用於多種自動化場景。",
+        desc_en: "High-reliability industrial control I/O solution, suitable for various automation scenarios.",
+        di: "-", do: "12 ch (Souce Transistor 1A)", ai: "-", ao: "-", comm: "RS-485",
+        features: ["內建看門狗計時器 (Watchdog Timer)", "支援標準 Modbus RTU 協定", "寬電壓輸入範圍 10~30VDC", "雙重隔離保護設計", "DIN Rail 導軌安裝"],
+        features_en: ["Built-in Watchdog Timer", "Supports standard Modbus RTU", "Wide voltage input 10~30VDC", "Dual isolation protection", "DIN Rail mounting"],
+        applications: [
+            { name: "A-8057 應用範例-1", name_en: "A-8057 Application Example 1", link: "Html_Data/solutions/A-8057/Application_Example_1.html" }
+        ],
+        documents: [
+        ],
+        wiringImage: "Html_Data/assets/A-8057.png",
+        manualLink: "#",
+		// A-8057 右側側邊 Tab的文件
+        tabs: [
+        ]
+    },
+	
+	// A-8058
+	{
+	    model: "A-8058", series: "A-80x", 
+        image: "Html_Data/assets/A-8058.png", 
+        desc: "高可靠度的工業控制 I/O 解決方案，適用於多種自動化場景。",
+        desc_en: "High-reliability industrial control I/O solution, suitable for various automation scenarios.",
+        di: "-", do: "12 ch (Sink Transistor 200mA)", ai: "-", ao: "-", comm: "RS-485",
+        features: ["內建看門狗計時器 (Watchdog Timer)", "支援標準 Modbus RTU 協定", "寬電壓輸入範圍 10~30VDC", "雙重隔離保護設計", "DIN Rail 導軌安裝"],
+        features_en: ["Built-in Watchdog Timer", "Supports standard Modbus RTU", "Wide voltage input 10~30VDC", "Dual isolation protection", "DIN Rail mounting"],
+        applications: [
+            { name: "A-8058 應用範例-1", name_en: "A-8058 Application Example 1", link: "Html_Data/solutions/A-8058/Application_Example_1.html" }
+        ],
+        documents: [
+        ],
+        wiringImage: "Html_Data/assets/A-8058.png",
+        manualLink: "#",
+		// A-8058 右側側邊 Tab的文件
+        tabs: [
+        ]
+    },
+	
+	// A-8060
+	{
+	    model: "A-8060", series: "A-80x", 
+        image: "Html_Data/assets/A-8060.png", 
+        desc: "高可靠度的工業控制 I/O 解決方案，適用於多種自動化場景。",
+        desc_en: "High-reliability industrial control I/O solution, suitable for various automation scenarios.",
+        di: "8 ch", do: "4 ch (Power Relay)", ai: "-", ao: "-", comm: "RS-485",
+        features: ["內建看門狗計時器 (Watchdog Timer)", "支援標準 Modbus RTU 協定", "寬電壓輸入範圍 10~30VDC", "雙重隔離保護設計", "DIN Rail 導軌安裝"],
+        features_en: ["Built-in Watchdog Timer", "Supports standard Modbus RTU", "Wide voltage input 10~30VDC", "Dual isolation protection", "DIN Rail mounting"],
+        applications: [
+            { name: "A-8060 應用範例-1", name_en: "A-8060 Application Example 1", link: "Html_Data/solutions/A-8060/Application_Example_1.html" }
+        ],
+        documents: [
+        ],
+        wiringImage: "Html_Data/assets/A-8055S.png",
+        manualLink: "#",
+		// A-8060 右側側邊 Tab的文件
+        tabs: [
+        ]
+    },
+	
+	// A-8068
+	{
+	    model: "A-8068", series: "A-80x", 
+        image: "Html_Data/assets/A-8068.png", 
+        desc: "高可靠度的工業控制 I/O 解決方案，適用於多種自動化場景。",
+        desc_en: "High-reliability industrial control I/O solution, suitable for various automation scenarios.",
+        di: "-", do: "8 ch (Signal Relay)", ai: "-", ao: "-", comm: "RS-485",
+        features: ["內建看門狗計時器 (Watchdog Timer)", "支援標準 Modbus RTU 協定", "寬電壓輸入範圍 10~30VDC", "雙重隔離保護設計", "DIN Rail 導軌安裝"],
+        features_en: ["Built-in Watchdog Timer", "Supports standard Modbus RTU", "Wide voltage input 10~30VDC", "Dual isolation protection", "DIN Rail mounting"],
+        applications: [
+            { name: "A-8068 應用範例-1", name_en: "A-8068 Application Example 1", link: "Html_Data/solutions/A-8068/Application_Example_1.html" }
+        ],
+        documents: [
+        ],
+        wiringImage: "Html_Data/assets/A-8068.png",
+        manualLink: "#",
+		// A-8068 右側側邊 Tab的文件
+        tabs: [
+        ]
+    },
+	
+	// A-8069
+	{
+	    model: "A-8069", series: "A-80x", 
+        image: "Html_Data/assets/A-8069.png", 
+        desc: "高可靠度的工業控制 I/O 解決方案，適用於多種自動化場景。",
+        desc_en: "High-reliability industrial control I/O solution, suitable for various automation scenarios.",
+        di: "-", do: "8 ch (Power Relay)", ai: "-", ao: "-", comm: "RS-485",
+        features: ["內建看門狗計時器 (Watchdog Timer)", "支援標準 Modbus RTU 協定", "寬電壓輸入範圍 10~30VDC", "雙重隔離保護設計", "DIN Rail 導軌安裝"],
+        features_en: ["Built-in Watchdog Timer", "Supports standard Modbus RTU", "Wide voltage input 10~30VDC", "Dual isolation protection", "DIN Rail mounting"],
+        applications: [
+            { name: "A-8069 應用範例-1", name_en: "A-8069 Application Example 1", link: "Html_Data/solutions/A-8069/Application_Example_1.html" }
+        ],
+        documents: [
+        ],
+        wiringImage: "Html_Data/assets/A-8069.png",
+        manualLink: "#",
+		// A-8069 右側側邊 Tab的文件
+        tabs: [
+        ]
+    },
+	
+	// A-8080
+	{
+	    model: "A-8080", series: "A-80x", 
+        image: "Html_Data/assets/A-8080.png", 
+        desc: "高可靠度的工業控制 I/O 解決方案，適用於多種自動化場景。",
+        desc_en: "High-reliability industrial control I/O solution, suitable for various automation scenarios.",
+        di: "-", do: "8 ch (HID Relay)", ai: "-", ao: "-", comm: "RS-485",
+        features: ["內建看門狗計時器 (Watchdog Timer)", "支援標準 Modbus RTU 協定", "寬電壓輸入範圍 10~30VDC", "雙重隔離保護設計", "DIN Rail 導軌安裝"],
+        features_en: ["Built-in Watchdog Timer", "Supports standard Modbus RTU", "Wide voltage input 10~30VDC", "Dual isolation protection", "DIN Rail mounting"],
+        applications: [
+            { name: "A-8080 應用範例-1", name_en: "A-8080 Application Example 1", link: "Html_Data/solutions/A-8080/Application_Example_1.html" }
+        ],
+        documents: [
+        ],
+        wiringImage: "Html_Data/assets/A-8080.png",
+        manualLink: "#",
+		// A-8080 右側側邊 Tab的文件
+        tabs: [
+        ]
+    },
+	
     { 
         model: "A-1012", series: "A-10x", 
         image: "Html_Data/assets/A-1012.png", 
@@ -325,7 +605,7 @@ const categoryData = [
         icon: "expand_more",
         isOpen: false,
         items: [
-            { title_zh: "A-9N GUI", title_en: "A-9N GUI", link: "#" },
+            { title_zh: "A-9N(GUI)", title_en: "A-9N (GUI)", link: "products/products_a9n.html" },
             { title_zh: "A-9H(HMI)", title_en: "A-9H (HMI)", link: "#" }
         ]
     },
@@ -362,7 +642,7 @@ const mainMenuData = [
     { id: "about", title_zh: "關於我們", title_en: "About Us", link: "about/about.html" },
     { id: "news", title_zh: "最新消息", title_en: "News", link: "news/news.html" },
     { id: "support", title_zh: "技術支援", title_en: "Support", link: "support/support.html" },
-    { id: "products", title_zh: "產品介紹", title_en: "Products", link: "products/products_a10x.html" },
+    { id: "products", title_zh: "產品介紹", title_en: "Products", link: "products/products_a80x.html" },
     { id: "location", title_zh: "交通位置", title_en: "Location", link: "location/location.html" },
     { id: "contact", title_zh: "聯絡我們", title_en: "Contact", link: "contact/contact.html" }
 ];

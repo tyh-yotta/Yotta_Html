@@ -84,7 +84,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
             filteredData.forEach(product => {
                 const tr = document.createElement('tr');
-                const productUrl = basePath ? `product.html?model=${product.model}` : `products/product.html?model=${product.model}`;
+                const encodedModel = encodeURIComponent(product.model);
+                const productUrl = basePath ? `product.html?model=${encodedModel}` : `products/product.html?model=${encodedModel}`;
                 tr.innerHTML = `
                     <td><a href="${productUrl}" style="color: var(--accent-color); text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='var(--primary-color)'" onmouseout="this.style.color='var(--accent-color)'"><strong>${product.model}</strong></a></td>
                     <td>${product.di}</td>
@@ -105,7 +106,8 @@ document.addEventListener('DOMContentLoaded', () => {
             filteredData.forEach(product => {
                 const card = document.createElement('a');
                 // If we are in root, product page is products/product.html. If in products/, it's just product.html
-                const productUrl = basePath ? `product.html?model=${product.model}` : `products/product.html?model=${product.model}`;
+                const encodedModel = encodeURIComponent(product.model);
+                const productUrl = basePath ? `product.html?model=${encodedModel}` : `products/product.html?model=${encodedModel}`;
                 card.href = productUrl;
                 card.className = 'model-card';
                 card.title = window.currentLang === 'zh' ? `前往 ${product.model} 專屬頁面` : `Go to ${product.model} page`;
