@@ -2,11 +2,27 @@
 const productData = [
 	// A-9N GUI
 	{
-	    model: "A-9N GUI", series: "A-9N", 
+	    model: "A-9N GUI", series: "A-9N", type: "ipc",
         image: "Html_Data/assets/A-9N(GUI).png", 
-        desc: "邊緣運算器，適用於各種自動化與物聯網應用。 (Edge Computing GUI)",
-        desc_en: "Edge Computing GUI, suitable for various automation and IoT applications.",
+        desc: "A-9N(GUI)邊緣運算器，專為資料採集與視覺化而設計。",
+        desc_en: "A-9N(GUI) Edge Controller, designed for data acquisition and visualization.",
         di: "-", do: "-", ai: "-", ao: "-", comm: "Ethernet / Wi-Fi / RS-485",
+        ipcSpecs: {
+            cpu: "Quad-Core ARM Cortex-A53",
+            ram: "2GB DDR4",
+            storage: "16GB eMMC",
+            display: "HDMI 輸出 (最高支援 1080p)",
+            os: "Linux (Debian / Yocto)",
+            ports: "2x RJ45 (LAN), 2x USB 2.0, 1x RS485"
+        },
+        ipcSpecs_en: {
+            cpu: "Quad-Core ARM Cortex-A53",
+            ram: "2GB DDR4",
+            storage: "16GB eMMC",
+            display: "HDMI Output (Up to 1080p)",
+            os: "Linux (Debian / Yocto)",
+            ports: "2x RJ45 (LAN), 2x USB 2.0, 1x RS485"
+        },
         features: ["內建看門狗計時器 (Watchdog Timer)", "支援標準 Modbus TCP/RTU", "寬電壓輸入範圍 10~30VDC", "雙重隔離保護設計", "DIN Rail 導軌安裝"],
         features_en: ["Built-in Watchdog Timer", "Supports standard Modbus TCP/RTU", "Wide voltage input 10~30VDC", "Dual isolation protection", "DIN Rail mounting"],
         applications: [
@@ -28,6 +44,88 @@ const productData = [
                     <img src="https://m1.hocom.tw/Uploads/userfiles/images/1000163_eh202vzdkb1w7ad.png" style="width:100%; margin-bottom: 20px; border-radius: 8px;">
                     <img src="https://m1.hocom.tw/Uploads/userfiles/images/1000163_dy3axpbt9x7katq.png" style="width:100%; margin-bottom: 20px; border-radius: 8px;">
                     <img src="https://m1.hocom.tw/Uploads/userfiles/images/1000163_pu58d7fgss4m04k.png" style="width:100%; margin-bottom: 20px; border-radius: 8px;">
+                `
+            },
+            {
+                id: "tab-manual",
+                title: "手冊下載",
+                title_en: "Manual Download",
+                content: `
+                    <h3 style="margin-bottom: 15px; color: var(--primary-color);">手冊下載 (Manual Download)</h3>
+                    <p style="color: var(--text-light); margin-bottom: 20px;">點擊下方項目即可檢視或下載相關手冊與檔案。</p>
+                    <div id="dynamicDocsContainer"></div>
+                `
+            }
+        ]
+    },
+    // A-9H HMI
+    {
+        model: "A-9H(HMI人機)", series: "A-9H", type: "ipc",
+        image: "Html_Data/assets/A-9H.JPG", 
+        desc: "A-9H 是一款基於 ARM 的高效能 IoT Box PC，擁有四核心處理器的開放平台設計，4個 RS-485 串列埠，1個 10/100/1000 乙太網路埠、兩個 USB 2.0 連接埠和工作溫度範圍 -10~+55°C。內建 Wi-Fi (2.4G+5G) 模組。",
+        desc_en: "A-9H is an ARM based high-performance IoT Box PC, which has an open platform design with Quad Core processor, Four RS-485 serial ports, one 10/100/1000 Ethernet ports, two USB 2.0 port and operating temperature range of -10~+55°C. Built-in Wi-Fi(2.4G+5G) modules.",
+        di: "-", do: "-", ai: "-", ao: "-", comm: "-",
+        ipcSpecs: {
+            cpu: "TI ARM Cortex-A53 Quad Core 1.4GHz",
+            ram: "LPDDR4 2GB",
+            storage: "32GB eMMC (Onboard)",
+            display: "1x HDMI up to 1920 x 1080 at 60Hz",
+            os: "Debian 12 + Node-Red",
+            ports: "4x RS-485, 2x USB 2.0, 1x GbE, 1x SPE, Wi-Fi(2.4G/5G)"
+        },
+        ipcSpecs_en: {
+            cpu: "TI ARM Cortex-A53 Quad Core 1.4GHz",
+            ram: "LPDDR4 2GB",
+            storage: "32GB eMMC (Onboard)",
+            display: "1x HDMI up to 1920 x 1080 at 60Hz",
+            os: "Debian 12 + Node-Red",
+            ports: "4x RS-485, 2x USB 2.0, 1x GbE, 1x SPE, Wi-Fi(2.4G/5G)"
+        },
+        features: [
+            "TI ARM Cortex-A53 Quad Core",
+            "Onboard RAM LPDDR4 2 GB, 32GB eMMC",
+            "4*RS-485, 2*USB 2.0, 1*GbE, 1*SPE, 1*WIFI(2.4G+5G), 1*HDMI(Type-A)",
+            "Built-in Node-Red",
+            "Operation Temperature -10°C to 55°C"
+        ],
+        features_en: [
+            "TI ARM Cortex-A53 Quad Core",
+            "Onboard RAM LPDDR4 2 GB, 32GB eMMC",
+            "4*RS-485, 2*USB 2.0, 1*GbE, 1*SPE, 1*WIFI(2.4G+5G), 1*HDMI(Type-A)",
+            "Built-in Node-Red",
+            "Operation Temperature -10°C to 55°C"
+        ],
+        applications: [],
+        documents: [
+            { name: "A-9H 產品規格書 (CHT)", name_en: "A-9H Spec (CHT)", icon: "picture_as_pdf", link: "https://drive.google.com/drive/folders/1OYban5am-cALA_yuYE9z4nGHePNAbPBI" },
+            { name: "A-9H 產品規格書 (ENG)", name_en: "A-9H Spec (ENG)", icon: "picture_as_pdf", link: "https://drive.google.com/drive/folders/1OYban5am-cALA_yuYE9z4nGHePNAbPBI" },
+            { name: "A-9H 使用手冊 (CHT)", name_en: "A-9H User Manual (CHT)", icon: "menu_book", link: "https://drive.google.com/drive/folders/1OYban5am-cALA_yuYE9z4nGHePNAbPBI" },
+            { name: "A-9H 使用手冊 (ENG)", name_en: "A-9H User Manual (ENG)", icon: "menu_book", link: "https://drive.google.com/drive/folders/1OYban5am-cALA_yuYE9z4nGHePNAbPBI" },
+            { name: "A9H.zip", name_en: "A9H.zip", icon: "download", link: "https://drive.google.com/drive/folders/1OYban5am-cALA_yuYE9z4nGHePNAbPBI" },
+            { name: "還原檔下載", name_en: "Recovery File", icon: "download", link: "https://drive.google.com/drive/folders/1OYban5am-cALA_yuYE9z4nGHePNAbPBI" }
+        ],
+        wiringImage: "",
+        manualLink: "#",
+        tabs: [
+            {
+                id: "tab-overview",
+                title: "產品總覽",
+                title_en: "Overview",
+                content: `
+                    <h3 style="margin-bottom: 15px; color: var(--primary-color);">A-9H(HMI人機)</h3>
+                    <img src="https://m1.hocom.tw/Uploads/userfiles/images/1000095_vs0d8ws3frbxq2a.jpg" style="width:100%; margin-bottom: 20px; border-radius: 8px;">
+                    <img src="https://m1.hocom.tw/Uploads/userfiles/images/1000095_ic6tes5efjwm4gs.jpg" style="width:100%; margin-bottom: 20px; border-radius: 8px;">
+                    <img src="https://m1.hocom.tw/Uploads/userfiles/images/1000095_8ch1rfz1jswm3cj.jpg" style="width:100%; margin-bottom: 20px; border-radius: 8px;">
+                `
+            },
+            {
+                id: "tab-manual",
+                title: "手冊下載",
+                title_en: "Manual Download",
+                content: `
+                    <h3 style="margin-bottom: 15px; color: var(--primary-color);">手冊下載 (Manual Download)</h3>
+                    <p style="color: var(--text-light); margin-bottom: 20px;">點擊下方項目即可檢視或下載相關手冊與檔案。</p>
+                    <div id="dynamicDocsContainer"></div>
                 `
             }
         ]
@@ -581,7 +679,76 @@ const productData = [
             { name: "機房環境監控", name_en: "Data Center Environmental Monitoring", link: "#" }
         ],
         wiringImage: "Html_Data/assets/product.png",
-        manualLink: "#"
+    },
+    { 
+        model: "A-15x", series: "A-15x", 
+        image: "https://m1.hocom.tw/ckfinder/connector?command=Proxy&type=Images&currentFolder=%2f&fileName=15(1).jpg", 
+        di: "-", do: "-", ai: "-", ao: "-", comm: "RS-232 / RS-485 / RS-422 / USB",
+        desc: "A-15x 系列是有線通訊轉換器，提供多種介面轉換選項（如 USB 轉 RS-485），具備 3000VDC 隔離保護與 ESD 保護，支援 DIN Rail 與壁掛安裝。",
+        desc_en: "A-15x series are wired communication converters providing multiple interface options (e.g., USB to RS-485) with 3000VDC isolation and ESD protection. Supports DIN Rail and wall mounting.",
+        features: ["自動波特率偵測 (300~115200bps)", "3000VDC 隔離保護", "ESD 保護", "無需外部供電 (USB 型號)"],
+        features_en: ["Auto Tuner baud rate, 300~115200bps", "3000VDC isolation protection", "ESD protection", "No external power supply (USB type)"],
+        applications: [],
+        wiringImage: "",
+        manualLink: "https://www.yottacontrol.com.tw/h/ServiceDetail?key=z59j7&set=7&cont=7384"
+    },
+    { 
+        model: "A-3450", series: "A-3450", type: "custom",
+        image: "https://m1.hocom.tw/ckfinder/connector?command=Proxy&type=Images&currentFolder=%2f&fileName=%e5%9c%96%e7%89%871(2).jpg", 
+        desc: "2.4G 無線通訊轉換器",
+        desc_en: "2.4G Wireless Communication Converter",
+        tabs: [
+            {
+                id: "tab-overview",
+                title: "產品總覽",
+                title_en: "Overview",
+                content: `
+                    <div style="font-size: 16px; line-height: 1.8; color: var(--text-main); margin-bottom: 30px;">
+                        <div><span style="color:#000000"><span style="font-family:Tahoma,Geneva,sans-serif">※視距傳輸距離可達100 米</span></span></div>
+                        <div><span style="color:#000000"><span style="font-family:Tahoma,Geneva,sans-serif">※提供面向位元組協定數據適應各種用戶協定</span></span></div>
+                        <div><span style="color:#000000"><span style="font-family:Tahoma,Geneva,sans-serif">※可以應用於點對點，點對多點和多點對點的通訊組合方法</span></span></div>
+                        <div><span style="color:#000000"><span style="font-family:Tahoma,Geneva,sans-serif">※自動過濾傳訊中的雜訊</span></span></div>
+                        <div><span style="color:#000000"><span style="font-family:Tahoma,Geneva,sans-serif">※高效糾正編碼技術，抗干擾數據</span></span></div>
+                        <div><span style="color:#000000"><span style="font-family:Tahoma,Geneva,sans-serif">※2.4GHz ISM頻率範圍，無需申請頻段</span></span></div>
+                        <div><span style="color:#000000"><span style="font-family:Tahoma,Geneva,sans-serif">※配備50 ohm SMA天線基座，提供多種天線選擇</span></span></div>
+                        <div><span style="color:#000000"><span style="font-family:Tahoma,Geneva,sans-serif">※同時提供RS-232 / RS-485 / RS-422介面接口</span></span></div>
+                        <div><span style="color:#000000"><span style="font-family:Tahoma,Geneva,sans-serif">※有效速度300〜115200bps</span></span></div>
+                    </div>
+
+                    <p><span style="font-size:18px"><span style="color:#ffffff"><span style="background-color:#8cc63d; padding: 3px 10px;">Specifications</span></span></span></p>
+
+                    <table class="table table-bordered" style="width:100%; max-width:800px; margin-top: 15px; border-color: #ddd;">
+                        <tbody>
+                            <tr style="background-color: #f5f5f5;">
+                                <td><span style="font-family:Tahoma,Geneva,sans-serif"><span style="font-size:14px"><span style="color:#000000"><strong>A-3450</strong></span></span></span></td>
+                            </tr>
+                            <tr>
+                                <td><span style="font-family:Tahoma,Geneva,sans-serif"><span style="font-size:14px"><span style="color:#000000">
+                                <strong>Operation Voltage:</strong> 10~30VDC/24VAC<br />
+                                <strong>Supports Max device:</strong> Maximum of 256 devices (Without repeater)<br />
+                                <strong>Frequency range:</strong> 2400 &ndash; 2483.5 MHz<br />
+                                <strong>Operation temperature:</strong> -20&deg;C to +75 &deg;C<br />
+                                <strong>Storage temperature:</strong> -25 &deg;C to +80 &deg;C<br />
+                                <strong>Installation:</strong> 35 mm DIN rail or Flush mounting<br />
+                                <strong>Connection:</strong> Removable 13-pin Terminal Block ( For RS-422 / 485 / 232 )<br />
+                                <strong>RF Module's Groups:</strong> 0~65535<br />
+                                <strong>RF Module's ID:</strong> 0~65535<br />
+                                <strong>RF Module's TX Power:</strong> 0~6<br />
+                                <strong>RF Module's Channel:</strong> 0~200<br />
+                                <strong>RF Module's Data Rate:</strong> 250K<br />
+                                <strong>Dimension (W x H x D mm):</strong> 76.4*118.2*40.7 mm
+                                </span></span></span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p style="margin-top: 30px;">
+                        <a href="http://www.yottacontrol.com/download/3450_E.pdf" target="_blank"><img alt="" src="https://web.hocom.tw/ckfinder/connector?command=Proxy&amp;type=Images&amp;currentFolder=%2f&amp;fileName=catalog-icon-7354(2).jpg" style="height:101px; width:120px" /></a>
+                        <span style="font-size:16px"><strong>&nbsp; &nbsp;<a href="http://www.yottacontrol.com/new2019/old/3450.html" target="_blank"><u><span style="font-family:Tahoma,Geneva,sans-serif"><img alt="" src="https://m1.hocom.tw/ckfinder/connector?command=Proxy&amp;type=Images&amp;currentFolder=%2f&amp;fileName=More-Info-Button(5).png" style="height:60px; width:150px" /></span></u></a></strong></span>
+                    </p>
+                `
+            }
+        ]
     }
 ];
 
@@ -605,8 +772,8 @@ const categoryData = [
         icon: "expand_more",
         isOpen: false,
         items: [
-            { title_zh: "A-9N(GUI)", title_en: "A-9N (GUI)", link: "products/products_a9n.html" },
-            { title_zh: "A-9H(HMI)", title_en: "A-9H (HMI)", link: "#" }
+            { title_zh: "A-9N(GUI)", title_en: "A-9N (GUI)", link: "products/product.html?model=A-9N%20GUI" },
+            { title_zh: "A-9H(HMI)", title_en: "A-9H (HMI)", link: "products/product.html?model=A-9H(HMI%E4%BA%BA%E6%A9%9F)" }
         ]
     },
     {
@@ -621,6 +788,17 @@ const categoryData = [
             { title_zh: "A-12x 系列(WIFI)", title_en: "A-12x Series (WIFI)", link: "#" },
             { title_zh: "A-18x 系列(乙太網路)", title_en: "A-18x Series (Ethernet)", link: "#" },
             { title_zh: "A-19x 系列(菊花鏈)", title_en: "A-19x Series (Daisy Chain)", link: "#" }
+        ]
+    },
+    {
+        groupId: "converters",
+        title_zh: "轉換器",
+        title_en: "Converters",
+        icon: "expand_more",
+        isOpen: false,
+        items: [
+            { title_zh: "A-15x(有線)", title_en: "A-15x (Wired)", link: "products/product.html?model=A-15x" },
+            { title_zh: "A-3450(2.4G無線)", title_en: "A-3450 (2.4G Wireless)", link: "products/product.html?model=A-3450" }
         ]
     },
     {

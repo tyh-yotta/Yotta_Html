@@ -150,22 +150,44 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('breadcrumbModel').textContent = product.model;
 
         // Dynamic breadcrumb series update
+        const breadcrumbCategory = document.getElementById('breadcrumbCategory');
         const breadcrumbSeries = document.getElementById('breadcrumbSeries');
+        const breadcrumbSeriesSeparator = document.getElementById('breadcrumbSeriesSeparator');
+        
         if (breadcrumbSeries && product.series) {
             let matchedSeries = null;
+            let matchedCategory = null;
             categoryData.forEach(cat => {
                 cat.items.forEach(item => {
                     if ((item.title_en && item.title_en.includes(product.series)) || (item.title_zh && item.title_zh.includes(product.series))) {
                         matchedSeries = item;
+                        matchedCategory = cat;
                     }
                 });
             });
             
+            if (matchedCategory && breadcrumbCategory) {
+                breadcrumbCategory.textContent = isEn ? matchedCategory.title_en : matchedCategory.title_zh;
+                if (matchedCategory.items.length > 0) {
+                    const catLinkParts = matchedCategory.items[0].link.split('/');
+                    breadcrumbCategory.href = catLinkParts[catLinkParts.length - 1];
+                }
+                breadcrumbCategory.removeAttribute('data-i18n');
+            }
+
             if (matchedSeries) {
-                const linkParts = matchedSeries.link.split('/');
-                const fileName = linkParts[linkParts.length - 1];
-                breadcrumbSeries.href = fileName;
-                breadcrumbSeries.textContent = isEn ? matchedSeries.title_en : matchedSeries.title_zh;
+                if (matchedSeries.link.includes('product.html?model=')) {
+                    breadcrumbSeries.style.display = 'none';
+                    if (breadcrumbSeriesSeparator) breadcrumbSeriesSeparator.style.display = 'none';
+                } else {
+                    breadcrumbSeries.style.display = '';
+                    if (breadcrumbSeriesSeparator) breadcrumbSeriesSeparator.style.display = '';
+                    
+                    const linkParts = matchedSeries.link.split('/');
+                    const fileName = linkParts[linkParts.length - 1];
+                    breadcrumbSeries.href = fileName;
+                    breadcrumbSeries.textContent = isEn ? matchedSeries.title_en : matchedSeries.title_zh;
+                }
             }
         }
 
@@ -177,11 +199,45 @@ document.addEventListener('DOMContentLoaded', () => {
             descEl.textContent = isEn && product.desc_en ? product.desc_en : (product.desc || '');
         }
         
-        document.getElementById('detailDi').textContent = product.di || '-';
-        document.getElementById('detailDo').textContent = product.do || '-';
-        document.getElementById('detailAi').textContent = product.ai || '-';
-        document.getElementById('detailAo').textContent = product.ao || '-';
-        document.getElementById('detailComm').textContent = product.comm || '-';
+        const ioSpecsContainer = document.getElementById('ioSpecsContainer');
+        let ipcSpecsContainer = document.getElementById('ipcSpecsContainer');
+        
+        if (product.type === 'ipc') {
+            if (ioSpecsContainer) ioSpecsContainer.style.display = 'none';
+            if (!ipcSpecsContainer) {
+                ipcSpecsContainer = document.createElement('div');
+                ipcSpecsContainer.id = 'ipcSpecsContainer';
+                ipcSpecsContainer.className = 'product-specs-summary';
+                ipcSpecsContainer.style.marginTop = '15px';
+                if (ioSpecsContainer) {
+                    ioSpecsContainer.parentNode.insertBefore(ipcSpecsContainer, ioSpecsContainer.nextSibling);
+                }
+            }
+            ipcSpecsContainer.style.display = 'block';
+            
+            const specs = (isEn && product.ipcSpecs_en) ? product.ipcSpecs_en : (product.ipcSpecs || {});
+            let tableHtml = '<table class="spec-table summary-table"><tbody>';
+            if (specs.cpu) tableHtml += `<tr><th>${isEn ? 'Processor' : '處理器'}</th><td>${specs.cpu}</td></tr>`;
+            if (specs.ram) tableHtml += `<tr><th>${isEn ? 'Memory' : '記憶體'}</th><td>${specs.ram}</td></tr>`;
+            if (specs.storage) tableHtml += `<tr><th>${isEn ? 'Storage' : '儲存空間'}</th><td>${specs.storage}</td></tr>`;
+            if (specs.display) tableHtml += `<tr><th>${isEn ? 'Display' : '顯示器'}</th><td>${specs.display}</td></tr>`;
+            if (specs.os) tableHtml += `<tr><th>${isEn ? 'OS' : '作業系統'}</th><td>${specs.os}</td></tr>`;
+            if (specs.ports) tableHtml += `<tr><th>${isEn ? 'I/O Ports' : '連接埠'}</th><td>${specs.ports}</td></tr>`;
+            tableHtml += '</tbody></table>';
+            ipcSpecsContainer.innerHTML = tableHtml;
+        } else if (product.type === 'custom') {
+            if (ioSpecsContainer) ioSpecsContainer.style.display = 'none';
+            if (ipcSpecsContainer) ipcSpecsContainer.style.display = 'none';
+        } else {
+            if (ipcSpecsContainer) ipcSpecsContainer.style.display = 'none';
+            if (ioSpecsContainer) ioSpecsContainer.style.display = 'block';
+            
+            document.getElementById('detailDi').textContent = product.di || '-';
+            document.getElementById('detailDo').textContent = product.do || '-';
+            document.getElementById('detailAi').textContent = product.ai || '-';
+            document.getElementById('detailAo').textContent = product.ao || '-';
+            document.getElementById('detailComm').textContent = product.comm || '-';
+        }
 
         // Render Dynamic Tabs First (so other scripts can find generated elements)
         const tabsContainer = document.getElementById('dynamicTabsContainer');
@@ -231,24 +287,31 @@ document.addEventListener('DOMContentLoaded', () => {
             tabsContainer.innerHTML = '';
             panesContainer.innerHTML = '';
 
-            tabsToRender.forEach((tab) => {
+            tabsToRender.forEach((tab, index) => {
                 const tabTitle = isEn && tab.title_en ? tab.title_en : tab.title;
                 const tabContent = isEn && tab.content_en ? tab.content_en : tab.content;
                 
                 const btn = document.createElement('button');
                 btn.type = 'button';
-                btn.className = 'inline-book-tab';
+                btn.className = 'inline-book-tab' + (index === 0 ? ' active' : '');
                 btn.setAttribute('data-target', tab.id);
                 btn.setAttribute('onclick', 'switchTab(this)');
                 btn.innerHTML = `<span class="tab-text">${tabTitle}</span>`;
                 tabsContainer.appendChild(btn);
 
                 const pane = document.createElement('div');
-                pane.className = 'inline-drawer-pane';
+                pane.className = 'inline-drawer-pane' + (index === 0 ? ' active' : '');
                 pane.id = tab.id;
                 pane.innerHTML = tabContent;
                 panesContainer.appendChild(pane);
             });
+
+            const drawerContainer = tabsContainer.closest('.inline-book-drawer-container');
+            if (drawerContainer) {
+                drawerContainer.classList.add('drawer-open');
+                const topSection = document.querySelector('.product-top-section');
+                if (topSection) topSection.style.minHeight = '500px';
+            }
 
             // Inject dynamic documents if the container exists
             const docsContainer = document.getElementById('dynamicDocsContainer');
@@ -258,7 +321,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     docsContentHtml = '<ul style="list-style: none; padding: 0; margin: 0; border-top: 1px solid var(--border-color);">' + product.documents.map(doc => {
                         const docName = isEn && doc.name_en ? doc.name_en : doc.name;
                         const icon = doc.icon || '📄';
-                        const link = doc.link && doc.link !== '#' ? basePath + doc.link : '#';
+                        const link = doc.link && doc.link !== '#' ? (doc.link.startsWith('http') ? doc.link : basePath + doc.link) : '#';
                         const onClick = link === '#' ? `onclick="alert(window.currentLang === 'en' ? 'Coming Soon' : '建置中'); return false;"` : `target="_blank"`;
                         return `<li style="border-bottom: 1px solid var(--border-color);">
                                     <a href="${link}" ${onClick} style="display: flex; align-items: center; padding: 12px 15px; text-decoration: none; color: var(--text-main); transition: background 0.2s;" onmouseover="this.style.background='rgba(128,128,128,0.1)'" onmouseout="this.style.background='transparent'">
@@ -292,9 +355,17 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Update Features
-        const features = isEn && product.features_en ? product.features_en : product.features;
+        const features = isEn && product.features_en ? product.features_en : (product.features || []);
         const featuresHtml = features.map(f => `<li><span class="material-symbols-outlined icon">check_circle</span> ${f}</li>`).join('');
-        document.getElementById('detailFeatures').innerHTML = featuresHtml;
+        const detailFeatures = document.getElementById('detailFeatures');
+        if (detailFeatures) {
+            detailFeatures.innerHTML = featuresHtml;
+            // Optionally hide the features section if there are no features
+            const featuresContainer = detailFeatures.closest('.product-features');
+            if (featuresContainer) {
+                featuresContainer.style.display = features.length > 0 ? 'block' : 'none';
+            }
+        }
 
         // Update Applications (Now targeting the container generated by tabs)
         const detailApps = document.getElementById('detailApplications');

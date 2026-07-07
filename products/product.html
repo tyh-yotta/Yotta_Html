@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
@@ -51,8 +51,8 @@
                 <span class="material-symbols-outlined separator">chevron_right</span>
                 <a href="products_a80x.html" data-i18n="nav.products">產品介紹</a>
                 <span class="material-symbols-outlined separator">chevron_right</span>
-                <a href="products_a80x.html" data-i18n="sidebar.io_modules">I/O 模組</a>
-                <span class="material-symbols-outlined separator">chevron_right</span>
+                <a href="products_a80x.html" id="breadcrumbCategory" data-i18n="sidebar.io_modules">I/O 模組</a>
+                <span class="material-symbols-outlined separator" id="breadcrumbSeriesSeparator">chevron_right</span>
                 <a href="products_a10x.html" id="breadcrumbSeries">A-10x 系列(RS485)</a>
                 <span class="material-symbols-outlined separator">chevron_right</span>
                 <span class="current" id="breadcrumbModel">載入中...</span>
@@ -81,7 +81,7 @@
                 <div class="product-info-panel">
                         <div class="permanent-specs-container">
                             <p class="product-desc" id="detailDesc">高可靠度的工業控制 I/O 解決方案，適用於多種自動化場景。</p>
-                            <div class="product-specs-summary" style="margin-top: 15px;">
+                            <div class="product-specs-summary" style="margin-top: 15px;" id="ioSpecsContainer">
                                 <table class="spec-table summary-table">
                                     <tbody>
                                         <tr><th data-i18n="table.di">DI (數位輸入)</th><td id="detailDi">-</td></tr>
