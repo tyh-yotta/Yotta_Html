@@ -287,31 +287,24 @@ document.addEventListener('DOMContentLoaded', () => {
             tabsContainer.innerHTML = '';
             panesContainer.innerHTML = '';
 
-            tabsToRender.forEach((tab, index) => {
+            tabsToRender.forEach((tab) => {
                 const tabTitle = isEn && tab.title_en ? tab.title_en : tab.title;
                 const tabContent = isEn && tab.content_en ? tab.content_en : tab.content;
                 
                 const btn = document.createElement('button');
                 btn.type = 'button';
-                btn.className = 'inline-book-tab' + (index === 0 ? ' active' : '');
+                btn.className = 'inline-book-tab';
                 btn.setAttribute('data-target', tab.id);
                 btn.setAttribute('onclick', 'switchTab(this)');
                 btn.innerHTML = `<span class="tab-text">${tabTitle}</span>`;
                 tabsContainer.appendChild(btn);
 
                 const pane = document.createElement('div');
-                pane.className = 'inline-drawer-pane' + (index === 0 ? ' active' : '');
+                pane.className = 'inline-drawer-pane';
                 pane.id = tab.id;
                 pane.innerHTML = tabContent;
                 panesContainer.appendChild(pane);
             });
-
-            const drawerContainer = tabsContainer.closest('.inline-book-drawer-container');
-            if (drawerContainer) {
-                drawerContainer.classList.add('drawer-open');
-                const topSection = document.querySelector('.product-top-section');
-                if (topSection) topSection.style.minHeight = '500px';
-            }
 
             // Inject dynamic documents if the container exists
             const docsContainer = document.getElementById('dynamicDocsContainer');

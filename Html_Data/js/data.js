@@ -694,9 +694,21 @@ const productData = [
     },
     { 
         model: "A-3450", series: "A-3450", type: "custom",
-        image: "https://m1.hocom.tw/ckfinder/connector?command=Proxy&type=Images&currentFolder=%2f&fileName=%e5%9c%96%e7%89%871(2).jpg", 
+        image: "Html_Data/assets/A-3450.jpg", 
         desc: "2.4G 無線通訊轉換器",
         desc_en: "2.4G Wireless Communication Converter",
+        features: [
+            "視距傳輸距離可達100 米",
+            "提供面向位元組協定數據適應各種用戶協定",
+            "可以應用於點對點，點對多點和多點對點的通訊組合方法",
+            "自動過濾傳訊中的雜訊",
+            "高效糾正編碼技術，抗干擾數據",
+            "2.4GHz ISM頻率範圍，無需申請頻段",
+            "配備50 ohm SMA天線基座，提供多種天線選擇",
+            "同時提供RS-232 / RS-485 / RS-422介面接口",
+            "有效速度300〜115200bps",
+            "有效速度300〜115200bps"
+        ],
         tabs: [
             {
                 id: "tab-overview",

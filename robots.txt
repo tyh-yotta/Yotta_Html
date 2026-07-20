@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+
+# 允許各大 AI 爬蟲抓取，以提升 AI 引用率 (GEO)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /

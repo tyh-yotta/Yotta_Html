@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-i18n="title.index">Yottacontrol | 專業工業自動化設備製造商</title>
+    <meta name="description" content="Yottacontrol 是專業的工業自動化設備製造商，提供高品質的 IIoT 閘道器、HMI 人機介面、邊緣運算器與 I/O 控制模組，協助企業實現工業 4.0 智慧工廠願景。">
+    <meta name="keywords" content="Yottacontrol, 工業自動化, IIoT 閘道器, HMI, 邊緣運算, I/O 模組, 工業電腦">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,6 +13,56 @@
     <!-- Material Icons -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel="stylesheet" href="Html_Data/css/index.css">
+
+    <!-- JSON-LD 結構化資料 (SEO & GEO 優化) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Yottacontrol",
+      "url": "https://www.yottacontrol.com.tw/",
+      "logo": "https://www.yottacontrol.com.tw/Html_Data/assets/logo.png",
+      "description": "專業工業自動化設備製造商，提供高品質的 IIoT 閘道器與控制模組。",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+886-7-821-6370",
+        "contactType": "customer service",
+        "email": "sales@yottacontrol.com.tw",
+        "areaServed": "TW",
+        "availableLanguage": "zh-Hant"
+      }
+    }
+    </script>
+
+    <!-- FAQPage JSON-LD 結構化資料 (提升 Google 大家也問 PAA) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [{
+        "@type": "Question",
+        "name": "什麼是 IIoT 閘道器？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IIoT 閘道器（工業物聯網閘道器）是連接工廠現場設備與雲端系統的核心橋樑。Yottacontrol 的 91xx 與 92xx 系列閘道器，能將傳統設備的數據無縫轉換為 MQTT 或 Modbus TCP 協定，協助企業快速實現智慧工廠的數據採集與遠端監控。"
+        }
+      }, {
+        "@type": "Question",
+        "name": "Yottacontrol 的控制模組支援哪些通訊協定？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "我們的 A-51x 控制器與 A-80x 系列 I/O 模組，廣泛支援標準 RS-485 介面及 Modbus RTU / TCP 通訊協定。這使得我們的模組能輕鬆與各大廠牌的 PLC（可程式化邏輯控制器）與 HMI（人機介面）系統完美整合。"
+        }
+      }, {
+        "@type": "Question",
+        "name": "邊緣運算器 (Edge Computing) 在工業自動化有何優勢？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "邊緣運算器能直接在靠近數據源的端點進行即時資料處理，大幅降低傳輸延遲。例如 Yottacontrol A-9N GUI，不僅具備強大的本地運算能力，還提供可視化介面，有效減輕雲端伺服器負載，全面提升自動化效率。"
+        }
+      }]
+    }
+    </script>
 </head>
 <body>
 
@@ -109,6 +161,35 @@
                                 <h3 class="title">A-80x 系列 I/O 模組</h3>
                             </div>
                         </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section for Google Featured Snippets & People Also Ask -->
+        <section class="home-section faq-section">
+            <div class="container">
+                <div class="section-heading text-center">
+                    <h2><b>FAQ</b><span>常見問題 (知識庫)</span></h2>
+                </div>
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <h3 class="faq-question">什麼是 IIoT 閘道器？</h3>
+                        <div class="faq-answer">
+                            <p>IIoT 閘道器（工業物聯網閘道器）是連接工廠現場設備與雲端系統的核心橋樑。Yottacontrol 的 91xx 與 92xx 系列閘道器，能將傳統設備的數據無縫轉換為 MQTT 或 Modbus TCP 協定，協助企業快速實現智慧工廠的數據採集與遠端監控。</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <h3 class="faq-question">Yottacontrol 的控制模組支援哪些通訊協定？</h3>
+                        <div class="faq-answer">
+                            <p>我們的 A-51x 控制器與 A-80x 系列 I/O 模組，廣泛支援標準 RS-485 介面及 Modbus RTU / TCP 通訊協定。這使得我們的模組能輕鬆與各大廠牌的 PLC（可程式化邏輯控制器）與 HMI（人機介面）系統完美整合。</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <h3 class="faq-question">邊緣運算器 (Edge Computing) 在工業自動化有何優勢？</h3>
+                        <div class="faq-answer">
+                            <p>邊緣運算器能直接在靠近數據源的端點進行即時資料處理，大幅降低傳輸延遲。例如 Yottacontrol A-9N GUI，不僅具備強大的本地運算能力，還提供可視化介面，有效減輕雲端伺服器負載，全面提升自動化效率。</p>
+                        </div>
                     </div>
                 </div>
             </div>
